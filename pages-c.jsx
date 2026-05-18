@@ -312,7 +312,7 @@ function CMSPage({ navigate, cardStyle = 'bordered', slug = 'default' }) {
             { title: 'Owner-Operator', desc: "I do every car myself. No team, no hired hands. My name is on every detail." },
             { title: 'All-Ireland Winner', desc: "1st place at the All-Ireland Mini Company Awards 2026. Representing Ireland internationally." },
             { title: 'Professional Products', desc: "Gtechniq and Gyeon exclusively. Professional-grade products that protect properly." },
-            { title: 'Published Prices', desc: "No DMs, no hidden fees. Published prices from €70. What you see is what you pay." },
+            { title: 'Published Prices', desc: "No DMs, no hidden fees. Published prices from €60. What you see is what you pay." },
           ].map((item, i) => (
             <Reveal key={i} delay={i * 0.08}>
               <div style={{

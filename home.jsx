@@ -4,7 +4,8 @@ const PACKAGES = [
   {
     eyebrow: 'The Weekly',
     tier: 'Mini Valet',
-    price: 110,
+    priceFrom: 60,
+    priceTo: 80,
     duration: '3–4 hours',
     popular: false,
     desc: "The foundation. A proper hand wash and interior clean — no sponges, no shortcuts. Perfect for regular maintenance.",
@@ -22,7 +23,8 @@ const PACKAGES = [
   {
     eyebrow: 'The Service',
     tier: 'Full Valet',
-    price: 200,
+    priceFrom: 80,
+    priceTo: 120,
     duration: '5–8 hours',
     popular: true,
     desc: "The one most people want. Everything in the Mini Valet, plus decontamination, machine polish, and a full interior deep clean.",
@@ -41,7 +43,8 @@ const PACKAGES = [
   {
     eyebrow: 'The Concours',
     tier: 'Deluxe Detail',
-    price: 500,
+    priceFrom: 400,
+    priceTo: 600,
     duration: '8–14 hours',
     popular: false,
     desc: "The full works. Multi-stage paint correction, Gtechniq ceramic coating, and an engine bay detail. The one that makes people ask if you bought a new car.",
@@ -98,7 +101,7 @@ function PricingCards({ navigate, cardStyle = 'bordered' }) {
 function PricingCard({ pkg, navigate, cardStyle, isLast }) {
   const ref = React.useRef();
   const inView = useInView(ref);
-  const price = useCountUp(pkg.price, 1200, inView);
+  const priceFrom = useCountUp(pkg.priceFrom, 1200, inView);
 
   return (
     <div
@@ -152,7 +155,7 @@ function PricingCard({ pkg, navigate, cardStyle, isLast }) {
           fontSize: 'clamp(2.2rem, 4vw, 3rem)', fontWeight: 700,
           color: 'var(--text-primary)',
           lineHeight: 1,
-        }}>€{price}</span>
+        }}>€{priceFrom}–{pkg.priceTo}</span>
       </div>
 
       {/* Duration */}

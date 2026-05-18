@@ -241,9 +241,9 @@ function BookPage({ cardStyle = 'bordered' }) {
   }
 
   const packages = [
-    { value: 'mini-valet', label: 'Mini Valet — €110' },
-    { value: 'full-valet', label: 'Full Valet — €200' },
-    { value: 'deluxe-detail', label: 'Deluxe Detail — €500' },
+    { value: 'mini-valet', label: 'Mini Valet — €60–80' },
+    { value: 'full-valet', label: 'Full Valet — €80–120' },
+    { value: 'deluxe-detail', label: 'Deluxe Detail — €400–600' },
     { value: 'wedding', label: 'Wedding Pack — €150' },
     { value: 'wedding-addon', label: 'Wedding Pack Add-on — +€60' },
   ];

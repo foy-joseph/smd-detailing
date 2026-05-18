@@ -110,7 +110,7 @@ function ServiceDetailCard({ pkg, navigate, cardStyle }) {
         }}>{pkg.tier}</h3>
 
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '8px' }}>
-          <span style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 700, color: 'var(--accent)' }}>€{pkg.price}</span>
+          <span style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 700, color: 'var(--accent)' }}>€{pkg.priceFrom}–{pkg.priceTo}</span>
           <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>{pkg.duration}</span>
         </div>
 
