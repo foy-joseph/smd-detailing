@@ -209,7 +209,7 @@ function BookPage({ cardStyle = 'bordered' }) {
     return errs;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length > 0) {
@@ -217,10 +217,21 @@ function BookPage({ cardStyle = 'bordered' }) {
       return;
     }
     setSending(true);
-    setTimeout(() => {
+    try {
+      const res = await fetch('https://smd-detailing-forms.arcadia-digital.workers.dev/book', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = await res.json();
+      if (!json.ok) throw new Error(json.error || 'Submission failed');
       setSending(false);
       setSubmitted(true);
-    }, 1500);
+    } catch (err) {
+      setSending(false);
+      setErrors({ _form: "Couldn't send your booking. Please try again, or text 087 114 6173." });
+    }
   };
 
   if (submitted) {
@@ -387,6 +398,16 @@ function BookPage({ cardStyle = 'bordered' }) {
                   )}
                 </div>
 
+                {errors._form && (
+                  <div role="alert" style={{
+                    padding: '12px 16px', borderRadius: '6px',
+                    background: 'rgba(220,80,80,0.08)',
+                    border: '1px solid rgba(220,80,80,0.3)',
+                    color: '#e89090', fontSize: '0.88rem', marginTop: '4px',
+                  }}>
+                    {errors._form}
+                  </div>
+                )}
                 <Btn size="lg" style={{ width: '100%', marginTop: '8px', opacity: sending ? 0.7 : 1 }}>
                   {sending ? 'Sending…' : 'Submit Enquiry'}
                 </Btn>
