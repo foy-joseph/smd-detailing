@@ -254,7 +254,7 @@ function Hero({ navigate }) {
       }}>
         <img
           src={IMAGES.hero}
-          alt="Premium car in dramatic lighting"
+          alt="VW Tiguan R-Line freshly detailed by SMD Detailing, Ballybofey"
           style={{
             width: '100%', height: '100%', objectFit: 'cover',
             transform: loaded ? 'scale(1)' : 'scale(1.05)',

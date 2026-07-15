@@ -7,15 +7,15 @@ function GalleryPage({ navigate }) {
   const categories = ['all', 'full valet', 'mini valet', 'concours', 'wedding'];
 
   const items = [
-    { src: IMAGES.car1, alt: 'Classic car full valet', cat: 'full valet', title: 'Ford Mustang — Full Valet', desc: 'Full exterior and interior detail' },
-    { src: IMAGES.car2, alt: 'Sports car concours detail', cat: 'concours', title: 'Nissan GT-R — Concours', desc: 'Multi-stage paint correction + ceramic coating' },
-    { src: IMAGES.car3, alt: 'Red sports car detail', cat: 'full valet', title: 'Audi RS5 — Full Valet', desc: 'Clay bar + full interior deep clean' },
-    { src: IMAGES.car4, alt: 'Porsche ceramic coating', cat: 'concours', title: 'Porsche 911 — Concours', desc: 'Gtechniq Crystal Serum applied' },
-    { src: IMAGES.car5, alt: 'Dark sports car mini valet', cat: 'mini valet', title: 'BMW M4 — Mini Valet', desc: 'Exterior wash + interior refresh' },
-    { src: IMAGES.car6, alt: 'Lamborghini detail work', cat: 'concours', title: 'Lamborghini — Concours', desc: 'Full paint correction, 14 hours' },
-    { src: IMAGES.wedding, alt: 'Wedding car preparation', cat: 'wedding', title: 'Wedding Daimler', desc: 'Wedding Pack — ribbon-ready finish' },
-    { src: IMAGES.detail1, alt: 'Detailing close up', cat: 'full valet', title: 'VW Golf — Full Valet', desc: 'Interior extraction + deep clean' },
-    { src: IMAGES.workshop, alt: 'Workshop detail session', cat: 'mini valet', title: 'Range Rover — Mini Valet', desc: 'Family SUV refreshed' },
+    { src: IMAGES.car1, alt: 'VW Tiguan R-Line after full valet', cat: 'full valet', title: 'VW Tiguan R-Line — Full Valet', desc: 'Full exterior and interior detail' },
+    { src: IMAGES.car2, alt: 'Classic Mini and Morris Minor Traveller detailed together', cat: 'concours', title: 'Classic Mini & Morris Minor — Concours', desc: 'Two classics, show-ready' },
+    { src: IMAGES.car3, alt: 'Audi A3 saloon after full valet', cat: 'full valet', title: 'Audi A3 — Full Valet', desc: 'Clay bar + full interior deep clean' },
+    { src: IMAGES.car4, alt: 'Kia Sorento after full valet', cat: 'full valet', title: 'Kia Sorento — Full Valet', desc: 'Deep clean, trim dressed, glass crystal-clear' },
+    { src: IMAGES.car5, alt: 'Kia Sportage after mini valet', cat: 'mini valet', title: 'Kia Sportage — Mini Valet', desc: 'Exterior wash + interior refresh' },
+    { src: IMAGES.car6, alt: 'Classic Mini in snow foam', cat: 'concours', title: 'Classic Mini — Decontamination', desc: 'Snow foam pre-wash before hand work' },
+    { src: IMAGES.wedding, alt: 'Classic Mini with show finish', cat: 'wedding', title: 'Classic Mini — Show Finish', desc: 'The finish your wedding car gets' },
+    { src: IMAGES.detail1, alt: 'VW Golf interior after deep clean', cat: 'full valet', title: 'VW Golf — Interior', desc: 'Interior extraction + deep clean' },
+    { src: IMAGES.workshop, alt: 'Range Rover covered in snow foam', cat: 'mini valet', title: 'Range Rover — In Progress', desc: 'Snow foam decontamination stage' },
   ];
 
   const filtered = filter === 'all' ? items : items.filter(i => i.cat === filter);

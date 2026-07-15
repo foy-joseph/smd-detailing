@@ -44,19 +44,20 @@ const FONT_PAIRINGS = {
   outfit: { '--font-display': "'Outfit', sans-serif", '--font-body': "'Source Sans 3', sans-serif" },
 };
 
+/* All photography is Shay's own work — shot on his phone, Donegal driveways and all. */
 const IMAGES = {
-  hero: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1920&q=80',
-  detail1: 'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1200&q=80',
-  detail2: 'https://images.unsplash.com/photo-1619405399517-d7fce0f13302?auto=format&fit=crop&w=1200&q=80',
-  car1: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=800&q=80',
-  car2: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80',
-  car3: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=800&q=80',
-  car4: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80',
-  car5: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c6?auto=format&fit=crop&w=800&q=80',
-  car6: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=800&q=80',
-  wedding: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0afa?auto=format&fit=crop&w=800&q=80',
-  workshop: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1200&q=80',
-  about: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
+  hero: '/images/hero-tiguan-rline.jpg',
+  detail1: '/images/golf-interior.jpg',
+  detail2: '/images/quilted-seats.jpg',
+  car1: '/images/tiguan-rline-front.jpg',
+  car2: '/images/classic-mini-morris.jpg',
+  car3: '/images/audi-a3.jpg',
+  car4: '/images/kia-sorento.jpg',
+  car5: '/images/kia-sportage.jpg',
+  car6: '/images/classic-mini-foam.jpg',
+  wedding: '/images/classic-mini-finish.jpg',
+  workshop: '/images/rangerover-foam.jpg',
+  about: '/images/classic-mini-finish.jpg',
 };
 
 /* ── Hooks ── */

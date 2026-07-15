@@ -398,7 +398,7 @@ function WeddingPack({ navigate, cardStyle = 'bordered' }) {
         }}>
           <LazyImg
             src={IMAGES.wedding}
-            alt="Wedding car detail"
+            alt="Classic Mini detailed to a show finish"
             style={{ minHeight: '300px' }}
           />
           <div style={{ padding: 'clamp(28px,5vw,48px)' }}>

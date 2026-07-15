@@ -30,7 +30,7 @@ function DealersPage({ navigate, cardStyle = 'bordered' }) {
           <Reveal delay={0.15}>
             <LazyImg
               src={IMAGES.workshop}
-              alt="Car dealership ready for detail"
+              alt="Range Rover mid snow-foam decontamination"
               style={{
                 borderRadius: 'var(--radius-lg)',
                 aspectRatio: '16/10',
