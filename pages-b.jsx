@@ -218,7 +218,7 @@ function BookPage({ cardStyle = 'bordered' }) {
     }
     setSending(true);
     try {
-      const res = await fetch('https://smd-detailing-forms.arcadia-digital.workers.dev/book', {
+      const res = await fetch('https://forms.smddetailing.com/book', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
