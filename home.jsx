@@ -27,11 +27,10 @@ const PACKAGES = [
     priceTo: 120,
     duration: '5–8 hours',
     popular: true,
-    desc: "The one most people want. Everything in the Mini Valet, plus decontamination, machine polish, and a full interior deep clean.",
+    desc: "The one most people want. Everything in the Mini Valet, plus decontamination and a full interior deep clean.",
     includes: [
       'Everything in Mini Valet, plus:',
       'Clay bar decontamination',
-      'Single-stage machine polish',
       'Interior deep clean & extraction',
       'Leather conditioning',
       'Trim & plastic restoration',

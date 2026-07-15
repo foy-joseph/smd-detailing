@@ -9,12 +9,12 @@ function GalleryPage({ navigate }) {
   const items = [
     { src: IMAGES.car1, alt: 'Classic car full valet', cat: 'full valet', title: 'Ford Mustang — Full Valet', desc: 'Full exterior and interior detail' },
     { src: IMAGES.car2, alt: 'Sports car concours detail', cat: 'concours', title: 'Nissan GT-R — Concours', desc: 'Multi-stage paint correction + ceramic coating' },
-    { src: IMAGES.car3, alt: 'Red sports car detail', cat: 'full valet', title: 'Audi RS5 — Full Valet', desc: 'Clay bar + single-stage polish' },
+    { src: IMAGES.car3, alt: 'Red sports car detail', cat: 'full valet', title: 'Audi RS5 — Full Valet', desc: 'Clay bar + full interior deep clean' },
     { src: IMAGES.car4, alt: 'Porsche ceramic coating', cat: 'concours', title: 'Porsche 911 — Concours', desc: 'Gtechniq Crystal Serum applied' },
     { src: IMAGES.car5, alt: 'Dark sports car mini valet', cat: 'mini valet', title: 'BMW M4 — Mini Valet', desc: 'Exterior wash + interior refresh' },
     { src: IMAGES.car6, alt: 'Lamborghini detail work', cat: 'concours', title: 'Lamborghini — Concours', desc: 'Full paint correction, 14 hours' },
     { src: IMAGES.wedding, alt: 'Wedding car preparation', cat: 'wedding', title: 'Wedding Daimler', desc: 'Wedding Pack — ribbon-ready finish' },
-    { src: IMAGES.detail1, alt: 'Detailing close up', cat: 'full valet', title: 'VW Golf — Full Valet', desc: 'Interior extraction + polish' },
+    { src: IMAGES.detail1, alt: 'Detailing close up', cat: 'full valet', title: 'VW Golf — Full Valet', desc: 'Interior extraction + deep clean' },
     { src: IMAGES.workshop, alt: 'Workshop detail session', cat: 'mini valet', title: 'Range Rover — Mini Valet', desc: 'Family SUV refreshed' },
   ];
 

@@ -1,6 +1,15 @@
 /* ── SMD Detailing · Shared Components ── */
 
 const THEMES = {
+  electric: {
+    '--accent': '#2E8BFF', '--accent-hover': '#57A3FF',
+    '--accent-glow': 'rgba(46,139,255,0.22)', '--accent-text': '#06080C',
+    '--bg': '#07080A', '--bg-elevated': '#0D0F14',
+    '--bg-card': '#12151C', '--bg-card-hover': '#181C26',
+    '--text-primary': '#EAEEF5', '--text-secondary': '#8A93A6',
+    '--text-muted': '#565E6E',
+    '--border': 'rgba(234,238,245,0.08)', '--border-accent': 'rgba(46,139,255,0.18)',
+  },
   gold: {
     '--accent': '#C9A55C', '--accent-hover': '#D4B36A',
     '--accent-glow': 'rgba(201,165,92,0.2)', '--accent-text': '#0C0B09',

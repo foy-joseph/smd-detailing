@@ -8,7 +8,7 @@ function ServicesPage({ navigate, cardStyle = 'bordered' }) {
     { q: 'Do you come to me, or do I drop off?', a: "Both. I'm based in Ballybofey but I cover all of Donegal. You can drop your car to me or I'll come to you — either works. Just let me know when you book." },
     { q: 'What products do you use?', a: "I use Gtechniq and Gyeon exclusively. Professional-grade products that protect properly and last. No supermarket car wash soap touching your paint." },
     { q: "What's the difference between a valet and a detail?", a: "A valet cleans your car. A detail corrects and protects it. The Mini Valet is a thorough valet. The Deluxe Detail is a full paint correction and ceramic coating — it's a different category of work entirely." },
-    { q: 'Can you remove scratches and swirl marks?', a: "Yes. Single-stage polish in the Full Valet removes light swirls. The Deluxe Detail includes multi-stage paint correction for deeper marks. I'll always be honest about what's achievable." },
+    { q: 'Can you remove scratches and swirl marks?', a: "Yes. The Deluxe Detail includes multi-stage paint correction for swirl marks and deeper scratches. I'll always be honest about what's achievable." },
     { q: 'Do you do ceramic coating?', a: "Yes — Gtechniq Crystal Serum is included in the Deluxe Detail. It's a professional-grade ceramic coating that lasts years, not months. I don't offer it as a standalone because proper coating requires proper prep." },
     { q: 'What happens if something goes wrong?', a: "I take the utmost care with every vehicle. I'll walk through the car with you before and after, and I stand behind my work." },
   ];
@@ -75,8 +75,8 @@ function ServiceDetailCard({ pkg, navigate, cardStyle }) {
       details: ['Exterior: Two-bucket hand wash, wheel faces cleaned, tyre dressing, glass polished', 'Interior: Full vacuum, dashboard and console wiped, door cards and sills cleaned'],
     },
     'Full Valet': {
-      desc: "The one most people want. Everything in the Mini Valet plus clay bar decontamination, a single-stage machine polish to remove light swirls, and a full interior deep clean. Your car comes back feeling new.",
-      details: ['Exterior: Everything in Mini Valet + clay bar, single-stage machine polish, trim dressed', 'Interior: Deep clean with extraction, leather conditioned, plastics restored, glass crystal-clear'],
+      desc: "The one most people want. Everything in the Mini Valet plus clay bar decontamination and a full interior deep clean. Your car comes back feeling new.",
+      details: ['Exterior: Everything in Mini Valet + clay bar decontamination, trim dressed', 'Interior: Deep clean with extraction, leather conditioned, plastics restored, glass crystal-clear'],
     },
     'Deluxe Detail': {
       desc: "The full works. Multi-stage paint correction removes years of swirl marks and scratches. Gtechniq ceramic coating protects the result for years. This is the detail that makes people ask if you bought a new car.",
