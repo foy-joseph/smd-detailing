@@ -127,11 +127,10 @@ function GalleryPage({ navigate }) {
               See the Transformation
             </h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', maxWidth: '440px', margin: '0 auto 24px' }}>
-              Follow my work on TikTok and Instagram for before/after videos, process breakdowns, and detailing tips.
+              Follow my work on Instagram for before/after photos, process breakdowns, and detailing tips.
             </p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Btn variant="outline" size="sm">TikTok</Btn>
-              <Btn variant="outline" size="sm">Instagram</Btn>
+              <Btn variant="outline" size="sm" onClick={() => window.open('https://www.instagram.com/smddetailing/', '_blank', 'noopener')}>Instagram</Btn>
             </div>
           </div>
         </Reveal>
@@ -184,7 +183,7 @@ Object.assign(window, { GalleryPage });
 function BookPage({ cardStyle = 'bordered' }) {
   const [form, setForm] = React.useState({
     name: '', phone: '', email: '',
-    vehicle: '', package: 'the-service',
+    vehicle: '', package: 'full-valet',
     service_type: 'drop-off',
     preferred_date: '', notes: '',
     is_dealer: false, dealer_name: '', volume: '',

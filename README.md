@@ -93,3 +93,7 @@ Book
 - Blog / content marketing — not the stage of the business.
 - Live chat — Shay's a student, manual SMS reply is the right channel.
 - Reviews from Google — uses placeholder testimonials. Real ones swap in 1:1 with the same card structure.
+
+## Build (added 15 Jul 2026)
+
+The .jsx sources are precompiled to `bundle.js` — run `./build.sh` after any .jsx edit, then `vercel deploy --prod`. index.html loads production React from `/vendor` plus the bundle; Babel-standalone is gone. Pages have real URLs (pushState + vercel.json rewrites) with per-page titles/descriptions defined in `app.jsx` (PAGE_META).

@@ -43,12 +43,21 @@ src="https://www.facebook.com/tr?id=969175685717565&ev=PageView&noscript=1"
   <meta name="description" content="Owner-operator car detailing in Ballybofey, Co. Donegal. All-Ireland 1st place. Published prices from €60.">
 
   <link rel="canonical" href="https://smddetailing.com/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta property="og:type" content="website">
   <meta property="og:title" content="SMD Detailing — Craft Car Detailing, Ballybofey">
   <meta property="og:description" content="All-Ireland-winning owner-operator car detailing in Donegal. Published prices from €60. I do every car myself.">
   <meta property="og:url" content="https://smddetailing.com/">
   <meta property="og:locale" content="en_IE">
+  <meta property="og:image" content="https://smddetailing.com/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SMD Detailing — Craft Car Detailing, Ballybofey">
+  <meta name="twitter:image" content="https://smddetailing.com/images/og-image.jpg">
+  <link rel="preload" as="image" href="/images/hero-tiguan-rline.jpg" fetchpriority="high">
 
   <script type="application/ld+json">
   {
@@ -69,7 +78,9 @@ src="https://www.facebook.com/tr?id=969175685717565&ev=PageView&noscript=1"
       "Ballybofey","Stranorlar","Letterkenny","Donegal Town","Buncrana","Bundoran",
       "Carndonagh","Lifford","Killybegs","Dungloe","Ardara","Glenties"
     ],
-    "founder": { "@type": "Person", "name": "Shay McDevitt" }
+    "founder": { "@type": "Person", "name": "Shay McDevitt" },
+    "image": "https://smddetailing.com/images/og-image.jpg",
+    "sameAs": ["https://www.instagram.com/smddetailing/"]
   }
   </script>
 
@@ -77,9 +88,8 @@ src="https://www.facebook.com/tr?id=969175685717565&ev=PageView&noscript=1"
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script src="/vendor/react.production.min.js"></script>
+  <script src="/vendor/react-dom.production.min.js"></script>
 
   <style>
     :root {
@@ -183,114 +193,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }/*EDITMODE-END*/;
   </script>
 
-  <script type="text/babel" src="tweaks-panel.jsx"></script>
-  <script type="text/babel" src="shared.jsx"></script>
-  <script type="text/babel" src="layout.jsx"></script>
-  <script type="text/babel" src="home.jsx"></script>
-  <script type="text/babel" src="pages-a.jsx"></script>
-  <script type="text/babel" src="pages-b.jsx"></script>
-  <script type="text/babel" src="pages-c.jsx"></script>
-  <script type="text/babel">
-/* ── App Shell ── */
-function App() {
-  const [page, setPage] = React.useState('home');
-  const [transitioning, setTransitioning] = React.useState(false);
-  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  <!-- Precompiled from the .jsx sources — run ./build.sh after editing any of them -->
+  <script src="/bundle.js"></script>
 
-  React.useEffect(() => {
-    const theme = THEMES[tweaks.theme] || THEMES.electric;
-    const fonts = FONT_PAIRINGS[tweaks.fontPairing] || FONT_PAIRINGS.spaceGrotesk;
-    const vars = { ...theme, ...fonts };
-    Object.entries(vars).forEach(([k, v]) => {
-      document.documentElement.style.setProperty(k, v);
-    });
-  }, [tweaks.theme, tweaks.fontPairing]);
-
-  const navigate = React.useCallback((p) => {
-    if (p === page) return;
-    setTransitioning(true);
-    setTimeout(() => {
-      setPage(p);
-      window.scrollTo({ top: 0, behavior: 'instant' });
-      setTimeout(() => setTransitioning(false), 50);
-    }, 250);
-  }, [page]);
-
-  const renderPage = () => {
-    const props = { navigate, cardStyle: tweaks.cardStyle };
-    switch (page) {
-      case 'home': return <HomePage {...props} />;
-      case 'services': return <ServicesPage {...props} />;
-      case 'about': return <AboutPage {...props} />;
-      case 'gallery': return <GalleryPage {...props} />;
-      case 'book': return <BookPage {...props} />;
-      case 'dealers': return <DealersPage {...props} />;
-      case 'cms': return <CMSPage {...props} />;
-      default: return <HomePage {...props} />;
-    }
-  };
-
-  return (
-    <>
-      <Nav currentPage={page} navigate={navigate} />
-      <main style={{
-        opacity: transitioning ? 0 : 1,
-        transform: transitioning ? 'translateY(8px)' : 'none',
-        transition: 'opacity 0.25s ease, transform 0.25s ease',
-        minHeight: '100vh',
-      }}>
-        {renderPage()}
-      </main>
-      <Footer navigate={navigate} />
-      <TweaksPanel title="SMD Detailing">
-        <TweakSection label="Theme">
-          <TweakRadio label="Colour" value={tweaks.theme}
-            options={[{label:'Electric Blue',value:'electric'},{label:'Gold',value:'gold'},{label:'Oxblood',value:'oxblood'},{label:'Midnight',value:'midnight'}]}
-            onChange={v => setTweak('theme', v)} />
-        </TweakSection>
-        <TweakSection label="Typography">
-          <TweakRadio label="Font Pairing" value={tweaks.fontPairing}
-            options={[{label:'Space Grotesk',value:'spaceGrotesk'},{label:'Outfit',value:'outfit'}]}
-            onChange={v => setTweak('fontPairing', v)} />
-        </TweakSection>
-        <TweakSection label="Cards">
-          <TweakRadio label="Card Style" value={tweaks.cardStyle}
-            options={[{label:'Bordered',value:'bordered'},{label:'Filled',value:'filled'},{label:'Glass',value:'glass'}]}
-            onChange={v => setTweak('cardStyle', v)} />
-        </TweakSection>
-        <TweakSection label="Pages">
-          {[{id:'home',label:'Home'},{id:'services',label:'Services'},{id:'about',label:'About'},
-            {id:'gallery',label:'Gallery'},{id:'book',label:'Book'},{id:'dealers',label:'Dealers'},
-            {id:'cms',label:'SEO Template'}].map(p => (
-            <TweakButton key={p.id} label={p.label} onClick={() => navigate(p.id)} />
-          ))}
-        </TweakSection>
-      </TweaksPanel>
-    </>
-  );
-}
-
-function HomePage({ navigate, cardStyle }) {
-  return (
-    <>
-      <Hero navigate={navigate} />
-      <BookingStrip />
-      <Stats />
-      <PricingCards navigate={navigate} cardStyle={cardStyle} />
-      <Comparison cardStyle={cardStyle} />
-      <WhatIDontDo cardStyle={cardStyle} />
-      <WeddingPack navigate={navigate} cardStyle={cardStyle} />
-      <DealerStrip navigate={navigate} />
-      <CoverageArea />
-      <PressStrip />
-      <SocialProof />
-      <FinalCTA navigate={navigate} />
-    </>
-  );
-}
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
-  </script>
 </body>
 </html>

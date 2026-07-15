@@ -1,5 +1,7 @@
 /* ── SMD Detailing · Nav + Footer ── */
 
+const pathFor = (id) => (id === 'home' ? '/' : `/${id}`);
+
 function Nav({ currentPage, navigate }) {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
@@ -61,8 +63,8 @@ function Nav({ currentPage, navigate }) {
         {/* Desktop links */}
         <div className="nav-desktop" style={desktopLinks}>
           {links.map(l => (
-            <button key={l.id} onClick={() => handleNav(l.id)} style={{
-              background: 'none', border: 'none', cursor: 'pointer',
+            <a key={l.id} href={pathFor(l.id)} onClick={e => { e.preventDefault(); handleNav(l.id); }} style={{
+              background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'none',
               fontFamily: 'var(--font-body)', fontSize: '0.9rem', fontWeight: 500,
               color: currentPage === l.id ? 'var(--accent)' : 'var(--text-secondary)',
               transition: 'color 0.2s',
@@ -71,7 +73,7 @@ function Nav({ currentPage, navigate }) {
             }} onMouseEnter={e => { if(currentPage !== l.id) e.target.style.color = 'var(--text-primary)'; }}
                onMouseLeave={e => { if(currentPage !== l.id) e.target.style.color = 'var(--text-secondary)'; }}>
               {l.label}
-            </button>
+            </a>
           ))}
           <Btn size="sm" onClick={() => handleNav('book')}>Book Now</Btn>
         </div>
@@ -102,15 +104,15 @@ function Nav({ currentPage, navigate }) {
         transition: 'opacity 0.3s ease',
       }}>
         {links.map((l, i) => (
-          <button key={l.id} onClick={() => handleNav(l.id)} style={{
-            background: 'none', border: 'none', cursor: 'pointer',
+          <a key={l.id} href={pathFor(l.id)} onClick={e => { e.preventDefault(); handleNav(l.id); }} style={{
+            background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'none',
             fontFamily: 'var(--font-display)', fontSize: '1.6rem', fontWeight: 600,
             color: currentPage === l.id ? 'var(--accent)' : 'var(--text-primary)',
             transition: 'all 0.3s',
             transform: menuOpen ? 'translateY(0)' : 'translateY(20px)',
             opacity: menuOpen ? 1 : 0,
             transitionDelay: `${i * 0.05}s`,
-          }}>{l.label}</button>
+          }}>{l.label}</a>
         ))}
         <Btn size="lg" onClick={() => handleNav('book')} style={{
           marginTop: '16px',
@@ -153,13 +155,11 @@ function Footer({ navigate }) {
             Craft car detailing by Shay McDevitt. Every car, every time. Based in Ballybofey, Co. Donegal.
           </p>
           <div style={{ display: 'flex', gap: '16px', marginTop: '20px' }}>
-            {['TikTok', 'Instagram', 'Facebook'].map(s => (
-              <a key={s} href="#" style={{
-                color: 'var(--text-muted)', fontSize: '0.8rem', fontWeight: 500,
-                transition: 'color 0.2s',
-              }} onMouseEnter={e => e.target.style.color = 'var(--accent)'}
-                 onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}>{s}</a>
-            ))}
+            <a href="https://www.instagram.com/smddetailing/" target="_blank" rel="noopener" style={{
+              color: 'var(--text-muted)', fontSize: '0.8rem', fontWeight: 500,
+              transition: 'color 0.2s',
+            }} onMouseEnter={e => e.target.style.color = 'var(--accent)'}
+               onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}>Instagram</a>
           </div>
         </div>
 
@@ -168,12 +168,12 @@ function Footer({ navigate }) {
           <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '16px' }}>Quick Links</h4>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {[{id:'services',l:'Services'},{id:'about',l:'About Shay'},{id:'gallery',l:'Gallery'},{id:'book',l:'Book Now'},{id:'dealers',l:'Dealer Programme'}].map(lnk => (
-              <button key={lnk.id} onClick={() => navigate(lnk.id)} style={{
-                background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left',
+              <a key={lnk.id} href={pathFor(lnk.id)} onClick={e => { e.preventDefault(); navigate(lnk.id); }} style={{
+                background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', textDecoration: 'none',
                 fontFamily: 'var(--font-body)', fontSize: '0.9rem',
                 color: 'var(--text-secondary)', transition: 'color 0.2s', padding: 0,
               }} onMouseEnter={e => e.target.style.color = 'var(--text-primary)'}
-                 onMouseLeave={e => e.target.style.color = 'var(--text-secondary)'}>{lnk.l}</button>
+                 onMouseLeave={e => e.target.style.color = 'var(--text-secondary)'}>{lnk.l}</a>
             ))}
           </div>
         </div>
