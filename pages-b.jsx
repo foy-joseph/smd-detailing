@@ -130,7 +130,7 @@ function GalleryPage({ navigate }) {
               Follow my work on Instagram for before/after photos, process breakdowns, and detailing tips.
             </p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Btn variant="outline" size="sm" onClick={() => window.open('https://www.instagram.com/smddetailing/', '_blank', 'noopener')}>Instagram</Btn>
+              <Btn variant="outline" size="sm" onClick={() => window.open('https://www.instagram.com/smddetailing_/', '_blank', 'noopener')}>Instagram</Btn>
             </div>
           </div>
         </Reveal>

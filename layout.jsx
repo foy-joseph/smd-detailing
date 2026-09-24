@@ -155,7 +155,7 @@ function Footer({ navigate }) {
             Craft car detailing by Shay McDevitt. Every car, every time. Based in Ballybofey, Co. Donegal.
           </p>
           <div style={{ display: 'flex', gap: '16px', marginTop: '20px' }}>
-            <a href="https://www.instagram.com/smddetailing/" target="_blank" rel="noopener" style={{
+            <a href="https://www.instagram.com/smddetailing_/" target="_blank" rel="noopener" style={{
               color: 'var(--text-muted)', fontSize: '0.8rem', fontWeight: 500,
               transition: 'color 0.2s',
             }} onMouseEnter={e => e.target.style.color = 'var(--accent)'}
