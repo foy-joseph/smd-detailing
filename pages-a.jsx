@@ -5,11 +5,11 @@ function ServicesPage({ navigate, cardStyle = 'bordered' }) {
 
   const faqs = [
     { q: 'How far in advance do I need to book?', a: "I'm usually booked up in advance. The sooner you get in touch, the sooner I can slot you in. I'll always confirm your date within 24 hours." },
-    { q: 'Do you come to me, or do I drop off?', a: "Both. I'm based in Ballybofey but I cover all of Donegal. You can drop your car to me or I'll come to you — either works. Just let me know when you book." },
-    { q: 'What products do you use?', a: "I use Gtechniq and Gyeon exclusively. Professional-grade products that protect properly and last. No supermarket car wash soap touching your paint." },
+    { q: 'Do I drop the car off to you?', a: "Yes. I work from Ballybofey and don't offer mobile detailing — every car is done in one place, with the right setup and the right light. Drop it to me, and I'll let you know when it's ready to collect." },
+    { q: 'What products do you use?', a: "Autosmart, Koch Chemie and CarPro. Professional-grade products that protect properly and last. No supermarket car wash soap touching your paint." },
     { q: "What's the difference between a valet and a detail?", a: "A valet cleans your car. A detail corrects and protects it. The Mini Valet is a thorough valet. The Deluxe Detail is a full paint correction and ceramic coating — it's a different category of work entirely." },
     { q: 'Can you remove scratches and swirl marks?', a: "Yes. The Deluxe Detail includes multi-stage paint correction for swirl marks and deeper scratches. I'll always be honest about what's achievable." },
-    { q: 'Do you do ceramic coating?', a: "Yes — Gtechniq Crystal Serum is included in the Deluxe Detail. It's a professional-grade ceramic coating that lasts years, not months. I don't offer it as a standalone because proper coating requires proper prep." },
+    { q: 'Do you do ceramic coating?', a: "Yes — a professional ceramic coating is included in the Deluxe Detail, and the Full Valet comes with a 3-month ceramic sealant. I don't offer the full coating as a standalone because proper coating requires proper prep." },
     { q: 'What happens if something goes wrong?', a: "I take the utmost care with every vehicle. I'll walk through the car with you before and after, and I stand behind my work." },
   ];
 
@@ -20,7 +20,7 @@ function ServicesPage({ navigate, cardStyle = 'bordered' }) {
         <Reveal>
           <SectionLabel>Services</SectionLabel>
           <SectionTitle style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)' }}>
-            Three Levels of Care.<br />
+            Four Levels of Care.<br />
             <span style={{ color: 'var(--accent)' }}>Published Prices.</span>
           </SectionTitle>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', maxWidth: '560px', lineHeight: 1.7 }}>
@@ -76,11 +76,15 @@ function ServiceDetailCard({ pkg, navigate, cardStyle }) {
     },
     'Full Valet': {
       desc: "The one most people want. Everything in the Mini Valet plus clay bar decontamination and a full interior deep clean. Your car comes back feeling new.",
-      details: ['Exterior: Everything in Mini Valet + clay bar decontamination, trim dressed', 'Interior: Deep clean with extraction, leather conditioned, plastics restored, glass crystal-clear'],
+      details: ['Exterior: Everything in Mini Valet + tar removal, 3-month ceramic sealant, trim dressed', 'Interior: Deep clean with extraction, leather conditioned, plastics restored, glass crystal-clear'],
+    },
+    'Premium Valet': {
+      desc: "The step up from the Full Valet. The engine bay gets detailed, the leather gets properly rejuvenated, every plastic gets UV protection, and the paint gets a hand polish and wax. For cars that deserve more than a clean.",
+      details: ['Exterior: Everything in Full Valet + engine bay detail, hand polish and wax', 'Interior: Leather rejuvenation, UV protection on all plastics'],
     },
     'Deluxe Detail': {
-      desc: "The full works. Multi-stage paint correction removes years of swirl marks and scratches. Gtechniq ceramic coating protects the result for years. This is the detail that makes people ask if you bought a new car.",
-      details: ['Exterior: Multi-stage paint correction, Gtechniq Crystal Serum ceramic coating, trim fully restored', 'Interior: Full deep clean, leather treated, plastics restored, engine bay detailed, exhaust tips mirror-polished'],
+      desc: "The full works. Multi-stage paint correction removes years of swirl marks and scratches. A professional ceramic coating protects the result for years. This is the detail that makes people ask if you bought a new car.",
+      details: ['Exterior: Multi-stage paint correction, professional ceramic coating, trim fully restored, exhaust tips mirror-polished', 'Interior: Everything in Premium Valet + interior protection applied, final inspection under lights'],
     },
   };
 
@@ -235,10 +239,10 @@ function AboutPage({ navigate }) {
             </p>
           </Reveal>
           <Reveal delay={0.15}>
-            <ImagePlaceholder
-              label="portrait photo of shay · half-day shoot"
-              aspect="4/5"
-              style={{ borderRadius: 'var(--radius-lg)' }}
+            <LazyImg
+              src={IMAGES.shay}
+              alt="Shay McDevitt, SMD Detailing, at the Student Enterprise Programme national final"
+              style={{ aspectRatio: '4/5', borderRadius: 'var(--radius-lg)' }}
             />
           </Reveal>
         </div>
@@ -327,9 +331,9 @@ function AboutPage({ navigate }) {
           gap: '20px',
         }}>
           {[
-            { brand: 'Gtechniq', desc: 'Ceramic coatings and paint protection. Lab-tested, long-lasting. The best in the business.', tag: 'Protection' },
-            { brand: 'Gyeon', desc: 'Premium car care products — from shampoos to interior cleaners. Korean engineering, serious performance.', tag: 'Care' },
-            { brand: 'Microfibre Only', desc: "No sponges, ever. Microfibre doesn't trap grit against your paint. It's the only safe choice.", tag: 'Method' },
+            { brand: 'Autosmart', desc: 'Trade-grade cleaning chemicals used by professional valeters across Ireland and the UK. Strong where it needs to be, safe on every surface.', tag: 'Cleaning' },
+            { brand: 'Koch Chemie', desc: 'German professional detailing chemistry — polishes, compounds and finishing products trusted in body shops and detailing studios worldwide.', tag: 'Polish' },
+            { brand: 'CarPro', desc: 'Ceramic coatings, sealants and decontamination products. The protection that keeps a finished car looking finished.', tag: 'Protection' },
           ].map((prod, i) => (
             <Reveal key={i} delay={i * 0.1}>
               <div style={{

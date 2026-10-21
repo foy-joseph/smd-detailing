@@ -160,14 +160,14 @@ const SEO_PAGES = {
     county: 'Donegal',
     distance: '25 minutes',
     nearby: ['Killybegs', 'Mountcharles', 'Ballyshannon', 'Bundoran'],
-    intro: "Professional car detailing serving Donegal Town and south Donegal. Based in Ballybofey, I cover the full area — drop-off or mobile service available.",
+    intro: "Professional car detailing serving Donegal Town and south Donegal. Based in Ballybofey, an easy drop-off from anywhere in the area.",
   },
   'default': {
     town: 'Donegal',
     county: 'Donegal',
     distance: 'across the county',
     nearby: ['Letterkenny', 'Donegal Town', 'Killybegs', 'Dungloe', 'Ardara'],
-    intro: "Professional car detailing serving all of County Donegal. Based in Ballybofey with mobile service available across the county.",
+    intro: "Professional car detailing serving all of County Donegal. Based in Ballybofey, with customers dropping off from right across the county.",
   },
 };
 
@@ -252,7 +252,7 @@ function CMSPage({ navigate, cardStyle = 'bordered', slug = 'default' }) {
                   marginTop: '4px', marginBottom: '8px',
                 }}>{pkg.tier}</h3>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '16px' }}>
-                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 700, color: 'var(--accent)' }}>€{pkg.price}</span>
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 700, color: 'var(--accent)' }}>€{pkg.priceFrom}–{pkg.priceTo}</span>
                   <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>{pkg.duration}</span>
                 </div>
                 <Btn size="sm" variant={pkg.popular ? 'primary' : 'outline'} onClick={() => navigate('book')} style={{ width: '100%' }}>
@@ -271,7 +271,7 @@ function CMSPage({ navigate, cardStyle = 'bordered', slug = 'default' }) {
           <SectionTitle>Serving {page.town} & Surrounds</SectionTitle>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.7, maxWidth: '560px', marginBottom: '28px' }}>
             Based in Ballybofey, just {page.distance} from {page.town}.
-            Drop your car to me or I'll come to you — mobile service available across the area.
+            Drop your car to me in Ballybofey and collect it when it's done.
           </p>
         </Reveal>
 
@@ -311,8 +311,8 @@ function CMSPage({ navigate, cardStyle = 'bordered', slug = 'default' }) {
           {[
             { title: 'Owner-Operator', desc: "I do every car myself. No team, no hired hands. My name is on every detail." },
             { title: 'All-Ireland Winner', desc: "1st place at the All-Ireland Mini Company Awards 2026. Representing Ireland internationally." },
-            { title: 'Professional Products', desc: "Gtechniq and Gyeon exclusively. Professional-grade products that protect properly." },
-            { title: 'Published Prices', desc: "No DMs, no hidden fees. Published prices from €60. What you see is what you pay." },
+            { title: 'Professional Products', desc: "Autosmart, Koch Chemie and CarPro. Professional-grade products that protect properly." },
+            { title: 'Published Prices', desc: "No DMs, no hidden fees. Published prices from €70. What you see is what you pay." },
           ].map((item, i) => (
             <Reveal key={i} delay={i * 0.08}>
               <div style={{
@@ -340,9 +340,9 @@ function CMSPage({ navigate, cardStyle = 'bordered', slug = 'default' }) {
 
         <div style={{ maxWidth: '680px', marginTop: '16px' }}>
           {[
-            { q: `Do you cover ${page.town}?`, a: `Yes — I'm based in Ballybofey, just ${page.distance} from ${page.town}. I offer both drop-off and mobile service.` },
+            { q: `Do you cover ${page.town}?`, a: `Yes — I'm based in Ballybofey, just ${page.distance} from ${page.town}. Drop your car to me and collect it when it's done.` },
             { q: 'How far in advance do I need to book?', a: "I'm usually booked up in advance. Get in touch and I'll slot you in as soon as possible." },
-            { q: 'What products do you use?', a: 'Gtechniq and Gyeon exclusively. Professional-grade products used by the best detailers worldwide.' },
+            { q: 'What products do you use?', a: 'Autosmart, Koch Chemie and CarPro. Professional-grade products used by the best detailers worldwide.' },
           ].map((faq, i) => (
             <CMSFaqItem key={i} faq={faq} />
           ))}

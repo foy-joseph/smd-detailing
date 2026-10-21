@@ -66,12 +66,12 @@ function Nav({ currentPage, navigate }) {
             <a key={l.id} href={pathFor(l.id)} onClick={e => { e.preventDefault(); handleNav(l.id); }} style={{
               background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'none',
               fontFamily: 'var(--font-body)', fontSize: '0.9rem', fontWeight: 500,
-              color: currentPage === l.id ? 'var(--accent)' : 'var(--text-secondary)',
+              color: currentPage === l.id ? 'var(--accent)' : 'var(--text-primary)',
               transition: 'color 0.2s',
               padding: '4px 0',
               borderBottom: currentPage === l.id ? '1px solid var(--accent)' : '1px solid transparent',
-            }} onMouseEnter={e => { if(currentPage !== l.id) e.target.style.color = 'var(--text-primary)'; }}
-               onMouseLeave={e => { if(currentPage !== l.id) e.target.style.color = 'var(--text-secondary)'; }}>
+            }} onMouseEnter={e => { if(currentPage !== l.id) e.target.style.color = 'var(--accent)'; }}
+               onMouseLeave={e => { if(currentPage !== l.id) e.target.style.color = 'var(--text-primary)'; }}>
               {l.label}
             </a>
           ))}
@@ -154,12 +154,18 @@ function Footer({ navigate }) {
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.7, maxWidth: '280px' }}>
             Craft car detailing by Shay McDevitt. Every car, every time. Based in Ballybofey, Co. Donegal.
           </p>
-          <div style={{ display: 'flex', gap: '16px', marginTop: '20px' }}>
-            <a href="https://www.instagram.com/smddetailing_/" target="_blank" rel="noopener" style={{
-              color: 'var(--text-muted)', fontSize: '0.8rem', fontWeight: 500,
-              transition: 'color 0.2s',
-            }} onMouseEnter={e => e.target.style.color = 'var(--accent)'}
-               onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}>Instagram</a>
+          <div style={{ display: 'flex', gap: '12px', marginTop: '20px' }}>
+            {SOCIALS.map(s => (
+              <a key={s.name} href={s.url} target="_blank" rel="noopener" aria-label={`SMD Detailing on ${s.name}`} title={s.name} style={{
+                width: '40px', height: '40px', borderRadius: '50%',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                background: 'var(--bg-card)', border: '1px solid var(--border)',
+                color: 'var(--text-primary)', transition: 'all 0.2s',
+              }} onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'var(--accent)'; }}
+                 onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-primary)'; }}>
+                <SocialIcon name={s.name} />
+              </a>
+            ))}
           </div>
         </div>
 
@@ -287,7 +293,6 @@ function Hero({ navigate }) {
             transform: loaded ? 'translateY(0)' : 'translateY(16px)',
             transition: 'all 0.7s cubic-bezier(.22,1,.36,1) 0.2s',
           }}>
-            <GoldLine width="40px" style={{ marginBottom: '20px' }} />
             <span style={{
               fontFamily: 'var(--font-display)',
               fontSize: '0.8rem', fontWeight: 600,
@@ -362,18 +367,6 @@ function Hero({ navigate }) {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div style={{
-        position: 'absolute', bottom: '32px', left: '50%',
-        transform: 'translateX(-50%)',
-        zIndex: 1,
-        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px',
-        opacity: loaded ? 0.5 : 0,
-        transition: 'opacity 1s ease 1.2s',
-      }}>
-        <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', letterSpacing: '0.15em', textTransform: 'uppercase', fontFamily: 'var(--font-display)' }}>Scroll</span>
-        <div style={{ width: '1px', height: '24px', background: 'var(--text-muted)', animation: 'pulse 2s ease infinite' }}></div>
-      </div>
     </section>
   );
 }

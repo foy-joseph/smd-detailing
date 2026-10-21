@@ -7,12 +7,12 @@ const PAGE_META = {
   home: {
     path: '/',
     title: 'SMD Detailing — Craft Car Detailing, Ballybofey',
-    desc: 'Owner-operator car detailing in Ballybofey, Co. Donegal. All-Ireland 1st place. Published prices from €60.',
+    desc: 'Owner-operator car detailing in Ballybofey, Co. Donegal. All-Ireland 1st place. Published prices from €70.',
   },
   services: {
     path: '/services',
     title: 'Services & Prices — SMD Detailing, Ballybofey',
-    desc: 'Mini Valet from €60, Full Valet from €80, Deluxe Detail with Gtechniq ceramic coating. Published prices, no hidden extras. Drop off or I come to you.',
+    desc: 'Mini Valet from €70, Full Valet from €100, Premium Valet from €180, Deluxe Detail with ceramic coating. Published prices, no hidden extras. Drop-off to Ballybofey.',
   },
   about: {
     path: '/about',
@@ -27,7 +27,7 @@ const PAGE_META = {
   book: {
     path: '/book',
     title: 'Book a Detail — SMD Detailing, Ballybofey',
-    desc: 'Book a Mini Valet, Full Valet or Deluxe Detail with Shay. Confirmed within 24 hours. Drop off to Ballybofey or mobile across Donegal.',
+    desc: 'Book a Mini, Full, Premium or Deluxe detail with Shay. Confirmed within 24 hours. Drop-off to Ballybofey, Co. Donegal.',
   },
   dealers: {
     path: '/dealers',

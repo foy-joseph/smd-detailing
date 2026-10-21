@@ -127,10 +127,12 @@ function GalleryPage({ navigate }) {
               See the Transformation
             </h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', maxWidth: '440px', margin: '0 auto 24px' }}>
-              Follow my work on Instagram for before/after photos, process breakdowns, and detailing tips.
+              Follow my work on TikTok and Facebook for before/after photos, process breakdowns, and detailing tips.
             </p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Btn variant="outline" size="sm" onClick={() => window.open('https://www.instagram.com/smddetailing_/', '_blank', 'noopener')}>Instagram</Btn>
+              {SOCIALS.map(s => (
+                <Btn key={s.name} variant="outline" size="sm" onClick={() => window.open(s.url, '_blank', 'noopener')}>{s.name}</Btn>
+              ))}
             </div>
           </div>
         </Reveal>
@@ -251,10 +253,11 @@ function BookPage({ cardStyle = 'bordered' }) {
   }
 
   const packages = [
-    { value: 'mini-valet', label: 'Mini Valet — €60–80' },
-    { value: 'full-valet', label: 'Full Valet — €80–120' },
+    { value: 'mini-valet', label: 'Mini Valet — €70–90' },
+    { value: 'full-valet', label: 'Full Valet — €100–160' },
+    { value: 'premium-valet', label: 'Premium Valet — €180–260' },
     { value: 'deluxe-detail', label: 'Deluxe Detail — €400–600' },
-    { value: 'wedding', label: 'Wedding Pack — €150' },
+    { value: 'wedding', label: 'Wedding Pack — €450–650' },
     { value: 'wedding-addon', label: 'Wedding Pack Add-on — +€60' },
   ];
 
@@ -300,28 +303,6 @@ function BookPage({ cardStyle = 'bordered' }) {
                   <FormSelect value={form.package} onChange={v => update('package', v)} options={packages} />
                 </FormField>
 
-                <FormField label="Service Type">
-                  <div style={{ display: 'flex', gap: '12px' }}>
-                    {[
-                      { value: 'drop-off', label: 'Drop-off to Ballybofey' },
-                      { value: 'mobile', label: 'I come to you' },
-                    ].map(opt => (
-                      <button key={opt.value} type="button" onClick={() => update('service_type', opt.value)} style={{
-                        flex: 1,
-                        padding: '12px 16px',
-                        background: form.service_type === opt.value ? 'var(--accent-glow)' : 'var(--bg-card)',
-                        border: form.service_type === opt.value ? '1.5px solid var(--accent)' : '1px solid var(--border)',
-                        borderRadius: 'var(--radius)',
-                        color: form.service_type === opt.value ? 'var(--accent)' : 'var(--text-secondary)',
-                        fontFamily: 'var(--font-body)',
-                        fontSize: '0.88rem', fontWeight: 500,
-                        cursor: 'pointer',
-                        transition: 'all 0.2s',
-                        minHeight: '44px',
-                      }}>{opt.label}</button>
-                    ))}
-                  </div>
-                </FormField>
 
                 <FormField label="Preferred Date (optional)">
                   <FormInput value={form.preferred_date} onChange={v => update('preferred_date', v)} type="date" />
@@ -445,7 +426,7 @@ function BookPage({ cardStyle = 'bordered' }) {
                 <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 600, marginBottom: '12px' }}>Quick Info</h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
                   <span>Based in Ballybofey, Co. Donegal</span>
-                  <span>Covering all of Donegal</span>
+                  <span>Drop-off only — no mobile service</span>
                   <span>Spaces fill up fast — book early</span>
                 </div>
               </div>

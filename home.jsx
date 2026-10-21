@@ -4,8 +4,8 @@ const PACKAGES = [
   {
     eyebrow: 'The Weekly',
     tier: 'Mini Valet',
-    priceFrom: 60,
-    priceTo: 80,
+    priceFrom: 70,
+    priceTo: 90,
     duration: '3–4 hours',
     popular: false,
     desc: "The foundation. A proper hand wash and interior clean — no sponges, no shortcuts. Perfect for regular maintenance.",
@@ -23,14 +23,15 @@ const PACKAGES = [
   {
     eyebrow: 'The Service',
     tier: 'Full Valet',
-    priceFrom: 80,
-    priceTo: 120,
+    priceFrom: 100,
+    priceTo: 160,
     duration: '5–8 hours',
     popular: true,
-    desc: "The one most people want. Everything in the Mini Valet, plus decontamination and a full interior deep clean.",
+    desc: "The one most people want. Everything in the Mini Valet, plus decontamination, a full interior deep clean and three months of sealant protection.",
     includes: [
       'Everything in Mini Valet, plus:',
-      'Clay bar decontamination',
+      'Tar removal',
+      '3-month ceramic sealant',
       'Interior deep clean & extraction',
       'Leather conditioning',
       'Trim & plastic restoration',
@@ -40,18 +41,33 @@ const PACKAGES = [
     ],
   },
   {
+    eyebrow: 'The Showroom',
+    tier: 'Premium Valet',
+    priceFrom: 180,
+    priceTo: 260,
+    duration: '6–10 hours',
+    popular: false,
+    desc: "The step up. Everything in the Full Valet, plus an engine bay detail, leather rejuvenation, UV protection for the plastics, and a hand polish and wax.",
+    includes: [
+      'Everything in Full Valet, plus:',
+      'Engine bay detail',
+      'Leather rejuvenation',
+      'Plastic UV protection',
+      'Hand polish & wax',
+    ],
+  },
+  {
     eyebrow: 'The Concours',
     tier: 'Deluxe Detail',
     priceFrom: 400,
     priceTo: 600,
-    duration: '8–14 hours',
+    duration: '10–15 hours',
     popular: false,
-    desc: "The full works. Multi-stage paint correction, Gtechniq ceramic coating, and an engine bay detail. The one that makes people ask if you bought a new car.",
+    desc: "The full works. Multi-stage paint correction and a professional ceramic coating. The one that makes people ask if you bought a new car.",
     includes: [
-      'Everything in Full Valet, plus:',
+      'Everything in Premium Valet, plus:',
       'Multi-stage paint correction',
-      'Gtechniq Crystal Serum coating',
-      'Engine bay detail',
+      'Ceramic coating applied',
       'Exhaust tips mirror-polished',
       'Full trim restoration',
       'Interior protection applied',
@@ -66,38 +82,40 @@ function PricingCards({ navigate, cardStyle = 'bordered' }) {
     <FullSection id="pricing" style={{ background: 'var(--bg-elevated)' }}>
       <Reveal>
         <SectionLabel>Published Prices — Always</SectionLabel>
-        <SectionTitle>Three Levels of Care</SectionTitle>
+        <SectionTitle>Four Levels of Care</SectionTitle>
         <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', maxWidth: '560px', marginBottom: '48px' }}>
           No DMs for a quote. No hidden extras. Pick the level of care your car deserves.
         </p>
       </Reveal>
 
-      <div style={{
+      <div id="pricing-grid" style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: '0',
+        gridTemplateColumns: 'repeat(4, 1fr)',
+        gap: '1px',
+        background: 'var(--border)',
         alignItems: 'stretch',
       }}>
         {PACKAGES.map((pkg, i) => (
-          <Reveal key={pkg.tier} delay={i * 0.12}>
-            <PricingCard pkg={pkg} navigate={navigate} cardStyle={cardStyle} isLast={i === 2} />
+          <Reveal key={pkg.tier} delay={i * 0.12} style={{ height: '100%' }}>
+            <PricingCard pkg={pkg} navigate={navigate} cardStyle={cardStyle} />
           </Reveal>
         ))}
       </div>
 
       {/* Responsive override */}
       <style>{`
-        @media (max-width: 860px) {
+        @media (max-width: 1100px) {
+          #pricing-grid { grid-template-columns: 1fr 1fr !important; }
+        }
+        @media (max-width: 640px) {
           #pricing-grid { grid-template-columns: 1fr !important; }
-          .pricing-col { border-right: none !important; border-bottom: 1px solid var(--border) !important; }
-          .pricing-col:last-child { border-bottom: none !important; }
         }
       `}</style>
     </FullSection>
   );
 }
 
-function PricingCard({ pkg, navigate, cardStyle, isLast }) {
+function PricingCard({ pkg, navigate, cardStyle }) {
   const ref = React.useRef();
   const inView = useInView(ref);
   const priceFrom = useCountUp(pkg.priceFrom, 1200, inView);
@@ -112,7 +130,7 @@ function PricingCard({ pkg, navigate, cardStyle, isLast }) {
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
-        borderRight: isLast ? 'none' : '1px solid var(--border)',
+        background: 'var(--bg-elevated)',
       }}
     >
       {/* Popular accent bar */}
@@ -226,7 +244,7 @@ function Comparison({ cardStyle = 'bordered' }) {
   const rows = [
     { label: 'Who does the work', budget: 'Whoever turns up', bigName: 'Hired lads', smd: 'Shay — every time' },
     { label: 'Published prices', budget: '✕', bigName: 'DMs only', smd: '✓ Always' },
-    { label: 'Products used', budget: 'Unknown', bigName: 'Basic', smd: 'Gtechniq · Gyeon' },
+    { label: 'Products used', budget: 'Unknown', bigName: 'Basic', smd: 'Autosmart · Koch Chemie · CarPro' },
     { label: 'Paint-safe method', budget: 'Sponge on paint', bigName: 'Varies', smd: 'Two-bucket, no sponges' },
     { label: 'Wait time', budget: 'Same day', bigName: 'Days', smd: 'In demand — book early' },
   ];
@@ -409,13 +427,13 @@ function WeddingPack({ navigate, cardStyle = 'bordered' }) {
               fontWeight: 700, marginBottom: '16px',
             }}>Wedding Pack</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '24px' }}>
-              Your wedding car deserves to look its best. Full exterior detail with a ribbon-ready finish.
-              Book as a standalone service or add it to any package.
+              Your wedding car deserves to look its best. The standalone Wedding Pack includes everything in the
+              Deluxe Detail, plus ribboning so the car is ready for the day. Or add the wedding finish to any package.
             </p>
             <div style={{ display: 'flex', gap: '24px', marginBottom: '28px', flexWrap: 'wrap' }}>
               <div>
                 <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontFamily: 'var(--font-display)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Standalone</span>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 700 }}>€150</div>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 700 }}>€450–650</div>
               </div>
               <div>
                 <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontFamily: 'var(--font-display)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Add-on</span>
@@ -470,7 +488,7 @@ function CoverageArea() {
         <SectionLabel>Coverage</SectionLabel>
         <SectionTitle>Serving Donegal</SectionTitle>
         <p style={{ color: 'var(--text-secondary)', marginBottom: '36px', maxWidth: '480px' }}>
-          Based in Ballybofey, covering the Twin Towns and beyond. Drop-off or I come to you.
+          Based in Ballybofey, serving the Twin Towns and beyond. Drop your car to me and collect it when it's done.
         </p>
       </Reveal>
 
@@ -506,10 +524,10 @@ function CoverageArea() {
 
 function PressStrip() {
   const outlets = [
-    { name: 'Donegal News', type: 'Print' },
-    { name: 'Highland Radio', type: 'Radio' },
-    { name: 'Ocean FM', type: 'Radio' },
-    { name: 'Donegal Daily', type: 'Online' },
+    { name: 'Donegal News', logo: '/images/press/donegal-news.png' },
+    { name: 'Highland Radio', logo: '/images/press/highland-radio.png' },
+    { name: 'Finn Valley Voice', logo: '/images/press/finn-valley-voice.png' },
+    { name: 'Donegal Daily', logo: '/images/press/donegal-daily.svg', invert: true },
   ];
 
   return (
@@ -526,23 +544,26 @@ function PressStrip() {
 
         <div style={{
           display: 'flex', flexWrap: 'wrap',
-          justifyContent: 'center', gap: '32px',
-          alignItems: 'center',
+          justifyContent: 'center', gap: 'clamp(32px, 6vw, 72px)',
+          alignItems: 'flex-start',
         }}>
           {outlets.map((o, i) => (
             <Reveal key={o.name} delay={i * 0.08}>
               <div style={{
                 display: 'flex', flexDirection: 'column',
-                alignItems: 'center', gap: '6px',
-                opacity: 0.4,
+                alignItems: 'center', gap: '12px',
+                opacity: 0.85,
               }}>
+                <img src={o.logo} alt={`${o.name} logo`} loading="lazy" style={{
+                  height: '40px', width: 'auto', maxWidth: '180px', objectFit: 'contain',
+                  filter: o.invert ? 'brightness(0) invert(1)' : 'none',
+                }} />
                 <span style={{
                   fontFamily: 'var(--font-display)',
-                  fontSize: '1.1rem', fontWeight: 700,
-                  color: 'var(--text-primary)',
-                  letterSpacing: '0.02em',
+                  fontSize: '0.8rem', fontWeight: 600,
+                  color: 'var(--text-secondary)',
+                  letterSpacing: '0.04em',
                 }}>{o.name}</span>
-                <Badge style={{ fontSize: '0.6rem', padding: '3px 8px' }}>Coming Soon</Badge>
               </div>
             </Reveal>
           ))}
