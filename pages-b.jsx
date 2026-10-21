@@ -208,7 +208,6 @@ function BookPage({ cardStyle = 'bordered' }) {
     if (!form.email.trim()) errs.email = 'Email is required';
     else if (!/\S+@\S+\.\S+/.test(form.email)) errs.email = 'Please enter a valid email';
     if (!form.vehicle.trim()) errs.vehicle = 'Vehicle make and model is required';
-    if (form.is_dealer && !form.dealer_name.trim()) errs.dealer_name = 'Business name is required';
     return errs;
   };
 
@@ -245,7 +244,7 @@ function BookPage({ cardStyle = 'bordered' }) {
             <div style={{ fontSize: '3rem', marginBottom: '20px' }}>◆</div>
             <SectionTitle>You're on the List</SectionTitle>
             <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
-              Thanks, {form.name.split(' ')[0]}. I'll get back to you within 24 hours to confirm your date.
+              Thanks, {form.name.split(' ')[0]}. I'll get in touch within 24 hours.
             </p>
             <GoldLine width="40px" style={{ margin: '24px auto 0' }} />
           </Reveal>
@@ -277,10 +276,9 @@ function BookPage({ cardStyle = 'bordered' }) {
           {/* Form */}
           <div>
             <Reveal>
-              <SectionLabel>Book</SectionLabel>
-              <SectionTitle>Get on the List</SectionTitle>
+              <SectionTitle>Book a Detail</SectionTitle>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.7, marginBottom: '32px', maxWidth: '480px' }}>
-                Fill in the details below and I'll confirm your booking within 24 hours.
+                Fill in the details below and I'll get in touch within 24 hours.
               </p>
             </Reveal>
 
@@ -309,7 +307,7 @@ function BookPage({ cardStyle = 'bordered' }) {
 
 
                 <FormField label="When are you hoping for? (optional)">
-                  <FormInput value={form.preferred_date} onChange={v => update('preferred_date', v)} placeholder="e.g. any weekday in late November, or whenever you've a slot" />
+                  <FormInput value={form.preferred_date} onChange={v => update('preferred_date', v)} placeholder="e.g. a Saturday in late November, or whenever you've a weekend slot" />
                 </FormField>
 
                 <FormField label="Notes (optional)">
@@ -336,51 +334,6 @@ function BookPage({ cardStyle = 'bordered' }) {
                   ></textarea>
                 </FormField>
 
-                {/* Commercial toggle */}
-                <div style={{
-                  padding: '16px 20px',
-                  background: 'var(--bg-card)',
-                  border: '1px solid var(--border)',
-                  borderRadius: 'var(--radius)',
-                }}>
-                  <label style={{
-                    display: 'flex', alignItems: 'center', gap: '12px',
-                    cursor: 'pointer',
-                  }}>
-                    <div onClick={() => update('is_dealer', !form.is_dealer)} style={{
-                      width: '44px', height: '24px',
-                      background: form.is_dealer ? 'var(--accent)' : 'var(--bg-elevated)',
-                      borderRadius: '12px',
-                      position: 'relative',
-                      transition: 'background 0.2s',
-                      border: '1px solid var(--border)',
-                      cursor: 'pointer', flexShrink: 0,
-                    }}>
-                      <div style={{
-                        width: '18px', height: '18px',
-                        background: 'var(--text-primary)',
-                        borderRadius: '50%',
-                        position: 'absolute', top: '2px',
-                        left: form.is_dealer ? '22px' : '2px',
-                        transition: 'left 0.2s',
-                      }}></div>
-                    </div>
-                    <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                      I'm a business enquiring about regular or volume work
-                    </span>
-                  </label>
-
-                  {form.is_dealer && (
-                    <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                      <FormField label="Business Name" error={errors.dealer_name}>
-                        <FormInput value={form.dealer_name} onChange={v => update('dealer_name', v)} placeholder="Business name" />
-                      </FormField>
-                      <FormField label="Approx. Volume per Week">
-                        <FormInput value={form.volume} onChange={v => update('volume', v)} placeholder="e.g. 3-5 cars" />
-                      </FormField>
-                    </div>
-                  )}
-                </div>
 
                 {errors._form && (
                   <div role="alert" style={{
@@ -393,7 +346,7 @@ function BookPage({ cardStyle = 'bordered' }) {
                   </div>
                 )}
                 <Btn size="lg" style={{ width: '100%', marginTop: '8px', opacity: sending ? 0.7 : 1 }}>
-                  {sending ? 'Sending…' : 'Submit Enquiry'}
+                  {sending ? 'Sending…' : 'Request a callback'}
                 </Btn>
               </form>
             </Reveal>
@@ -409,7 +362,7 @@ function BookPage({ cardStyle = 'bordered' }) {
                 <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 600, marginBottom: '16px' }}>What Happens Next</h4>
                 {[
                   { step: '1', text: "You submit this form" },
-                  { step: '2', text: "I reply within 24 hours" },
+                  { step: '2', text: "I get in touch within 24 hours" },
                   { step: '3', text: "We confirm your date and package" },
                   { step: '4', text: "Your car gets the care it deserves" },
                 ].map((s, i) => (
@@ -424,15 +377,6 @@ function BookPage({ cardStyle = 'bordered' }) {
                     <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', paddingTop: '3px' }}>{s.text}</span>
                   </div>
                 ))}
-              </div>
-
-              <div style={{ ...getCardStyle(cardStyle), padding: '28px 24px' }}>
-                <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 600, marginBottom: '12px' }}>Quick Info</h4>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                  <span>Based in Ballybofey, Co. Donegal</span>
-                  <span>Drop-off only — no mobile service</span>
-                  <span>Spaces fill up fast — book early</span>
-                </div>
               </div>
             </div>
           </Reveal>

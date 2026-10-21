@@ -6,4 +6,5 @@
   <url><loc>https://smddetailing.com/gallery</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://smddetailing.com/about</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://smddetailing.com/commercial</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://smddetailing.com/commercial-enquiry</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
 </urlset>

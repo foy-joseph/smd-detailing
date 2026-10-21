@@ -79,16 +79,20 @@ function Nav({ currentPage, navigate }) {
         </div>
 
         {/* Mobile hamburger */}
-        <button className="nav-mobile-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu" style={{
+        <button className="nav-mobile-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close menu' : 'Menu'} aria-expanded={menuOpen} style={{
           background: 'none', border: 'none', cursor: 'pointer',
-          padding: '8px', display: 'none', flexDirection: 'column', gap: '5px',
+          width: '44px', height: '44px', padding: 0, position: 'relative', display: 'none',
         }}>
-          <span style={{ width: '22px', height: '2px', background: 'var(--text-primary)', borderRadius: '1px', transition: 'all 0.3s',
-            transform: menuOpen ? 'rotate(45deg) translateY(7px)' : 'none' }}></span>
-          <span style={{ width: '22px', height: '2px', background: 'var(--text-primary)', borderRadius: '1px', transition: 'all 0.3s',
-            opacity: menuOpen ? 0 : 1 }}></span>
-          <span style={{ width: '22px', height: '2px', background: 'var(--text-primary)', borderRadius: '1px', transition: 'all 0.3s',
-            transform: menuOpen ? 'rotate(-45deg) translateY(-7px)' : 'none' }}></span>
+          {[0, 1, 2].map(i => (
+            <span key={i} style={{
+              position: 'absolute', left: '11px', width: '22px', height: '2px',
+              background: 'var(--text-primary)', borderRadius: '1px',
+              transition: 'all 0.3s',
+              top: menuOpen ? '21px' : `${15 + i * 7}px`,
+              transform: menuOpen ? (i === 0 ? 'rotate(45deg)' : i === 2 ? 'rotate(-45deg)' : 'none') : 'none',
+              opacity: menuOpen && i === 1 ? 0 : 1,
+            }}></span>
+          ))}
         </button>
       </nav>
 

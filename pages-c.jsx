@@ -25,7 +25,7 @@ function CommercialPage({ navigate, cardStyle = 'bordered' }) {
               I work with dealers, garages, fleets and businesses across Donegal. Weekly slots, consistent quality,
               fast turnaround. Your vehicles always look their best.
             </p>
-            <Btn size="lg" onClick={() => navigate('book')}>Enquire About Volume Work</Btn>
+            <Btn size="lg" onClick={() => navigate('commercial-enquiry')}>Enquire About Volume Work</Btn>
           </Reveal>
           <Reveal delay={0.15}>
             <LazyImg
@@ -135,7 +135,7 @@ function CommercialPage({ navigate, cardStyle = 'bordered' }) {
           }}>
             Whether it's three cars a week or fifteen, I'll build a programme that fits your operation.
           </p>
-          <Btn size="lg" onClick={() => navigate('book')}>Commercial Enquiry</Btn>
+          <Btn size="lg" onClick={() => navigate('commercial-enquiry')}>Commercial Enquiry</Btn>
         </Reveal>
       </FullSection>
     </div>
@@ -143,6 +143,208 @@ function CommercialPage({ navigate, cardStyle = 'bordered' }) {
 }
 
 Object.assign(window, { CommercialPage });
+
+
+/* ── SMD Detailing · Commercial Enquiry Page ── */
+
+function CommercialEnquiryPage({ cardStyle = 'bordered' }) {
+  const [form, setForm] = React.useState({
+    dealer_name: '', name: '', phone: '', email: '',
+    business_type: 'dealer', volume: '', notes: '',
+  });
+  const [errors, setErrors] = React.useState({});
+  const [submitted, setSubmitted] = React.useState(false);
+  const [sending, setSending] = React.useState(false);
+
+  const businessTypes = [
+    { value: 'dealer', label: 'Car dealer' },
+    { value: 'garage', label: 'Garage / workshop' },
+    { value: 'fleet', label: 'Fleet or company vehicles' },
+    { value: 'rental', label: 'Rental / taxi / hire' },
+    { value: 'other', label: 'Other business' },
+  ];
+
+  const update = (k, v) => {
+    setForm(f => ({ ...f, [k]: v }));
+    if (errors[k]) setErrors(e => { const n = { ...e }; delete n[k]; return n; });
+  };
+
+  const validate = () => {
+    const errs = {};
+    if (!form.dealer_name.trim()) errs.dealer_name = 'Business name is required';
+    if (!form.name.trim()) errs.name = 'Contact name is required';
+    if (!form.phone.trim()) errs.phone = 'Phone number is required';
+    if (!form.email.trim()) errs.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(form.email)) errs.email = 'Please enter a valid email';
+    return errs;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const errs = validate();
+    if (Object.keys(errs).length > 0) { setErrors(errs); return; }
+    setSending(true);
+    const typeLabel = (businessTypes.find(b => b.value === form.business_type) || {}).label || form.business_type;
+    try {
+      const res = await fetch('https://forms.smddetailing.com/book', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name, phone: form.phone, email: form.email,
+          vehicle: typeLabel,
+          package: 'commercial',
+          service_type: 'drop-off',
+          preferred_date: '',
+          notes: form.notes,
+          is_dealer: true,
+          dealer_name: form.dealer_name,
+          volume: form.volume,
+        }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = await res.json();
+      if (!json.ok) throw new Error(json.error || 'Submission failed');
+      setSending(false);
+      setSubmitted(true);
+    } catch (err) {
+      setSending(false);
+      setErrors({ _form: "Couldn't send your enquiry. Please try again, or text 087 114 6173." });
+    }
+  };
+
+  if (submitted) {
+    return (
+      <div style={{ paddingTop: '100px', minHeight: '80vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Section style={{ textAlign: 'center', maxWidth: '520px' }}>
+          <Reveal>
+            <div style={{ fontSize: '3rem', marginBottom: '20px' }}>◆</div>
+            <SectionTitle>Thanks, {form.name.split(' ')[0]}</SectionTitle>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
+              I'll get in touch within 24 hours to talk through what {form.dealer_name} needs.
+            </p>
+            <GoldLine width="40px" style={{ margin: '24px auto 0' }} />
+          </Reveal>
+        </Section>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ paddingTop: '100px' }}>
+      <Section>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+          gap: '48px',
+          alignItems: 'start',
+        }}>
+          <div>
+            <Reveal>
+              <SectionTitle>Commercial Enquiry</SectionTitle>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.7, marginBottom: '32px', maxWidth: '480px' }}>
+                Tell me about your operation and roughly how many vehicles you're dealing with. I'll get in touch within 24 hours.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <FormField label="Business Name" error={errors.dealer_name}>
+                  <FormInput value={form.dealer_name} onChange={v => update('dealer_name', v)} placeholder="Business name" />
+                </FormField>
+
+                <FormField label="Your Name" error={errors.name}>
+                  <FormInput value={form.name} onChange={v => update('name', v)} placeholder="Contact name" />
+                </FormField>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                  <FormField label="Phone" error={errors.phone}>
+                    <FormInput value={form.phone} onChange={v => update('phone', v)} placeholder="087 114 6173" type="tel" />
+                  </FormField>
+                  <FormField label="Email" error={errors.email}>
+                    <FormInput value={form.email} onChange={v => update('email', v)} placeholder="you@business.ie" type="email" />
+                  </FormField>
+                </div>
+
+                <FormField label="Type of Business">
+                  <FormSelect value={form.business_type} onChange={v => update('business_type', v)} options={businessTypes} />
+                </FormField>
+
+                <FormField label="Approx. Vehicles per Week">
+                  <FormInput value={form.volume} onChange={v => update('volume', v)} placeholder="e.g. 3–5 cars" />
+                </FormField>
+
+                <FormField label="What do you need? (optional)">
+                  <textarea
+                    value={form.notes}
+                    onChange={e => update('notes', e.target.value)}
+                    placeholder="Pre-sale prep, regular upkeep, one-off fleet clean, turnaround times…"
+                    rows={4}
+                    style={{
+                      width: '100%',
+                      background: 'var(--bg-card)',
+                      border: '1px solid var(--border)',
+                      borderRadius: 'var(--radius)',
+                      color: 'var(--text-primary)',
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '0.9rem',
+                      padding: '12px 16px',
+                      resize: 'vertical',
+                      outline: 'none',
+                      transition: 'border-color 0.2s',
+                    }}
+                    onFocus={e => e.target.style.borderColor = 'var(--accent)'}
+                    onBlur={e => e.target.style.borderColor = 'var(--border)'}
+                  ></textarea>
+                </FormField>
+
+                {errors._form && (
+                  <div role="alert" style={{
+                    padding: '12px 16px', borderRadius: '6px',
+                    background: 'rgba(220,80,80,0.08)',
+                    border: '1px solid rgba(220,80,80,0.3)',
+                    color: '#e89090', fontSize: '0.88rem', marginTop: '4px',
+                  }}>
+                    {errors._form}
+                  </div>
+                )}
+                <Btn size="lg" style={{ width: '100%', marginTop: '8px', opacity: sending ? 0.7 : 1 }}>
+                  {sending ? 'Sending…' : 'Request a callback'}
+                </Btn>
+              </form>
+            </Reveal>
+          </div>
+
+          <Reveal delay={0.2}>
+            <div style={{ position: 'sticky', top: '120px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              <div style={{ ...getCardStyle(cardStyle), padding: '28px 24px' }}>
+                <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 600, marginBottom: '16px' }}>What Happens Next</h4>
+                {[
+                  { step: '1', text: "You send this enquiry" },
+                  { step: '2', text: "I get in touch within 24 hours" },
+                  { step: '3', text: "I come see your operation and we agree scope and pricing" },
+                  { step: '4', text: "Your weekly slot is locked in" },
+                ].map((s, i) => (
+                  <div key={i} style={{ display: 'flex', gap: '14px', marginBottom: '14px', alignItems: 'flex-start' }}>
+                    <span style={{
+                      fontFamily: 'var(--font-display)', fontSize: '0.8rem', fontWeight: 700,
+                      color: 'var(--accent)', background: 'var(--accent-glow)',
+                      width: '28px', height: '28px', borderRadius: '50%',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      flexShrink: 0,
+                    }}>{s.step}</span>
+                    <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', paddingTop: '3px' }}>{s.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </Section>
+    </div>
+  );
+}
+
+Object.assign(window, { CommercialEnquiryPage });
 
 
 /* ── SMD Detailing · CMS / SEO Template Page ── */

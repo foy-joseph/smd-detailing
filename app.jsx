@@ -34,6 +34,11 @@ const PAGE_META = {
     title: 'Commercial Programme — SMD Detailing, Ballybofey',
     desc: 'Regular and volume detailing for dealers, garages, fleets and businesses across Donegal. Weekly slots, consistent quality, fast turnaround.',
   },
+  'commercial-enquiry': {
+    path: '/commercial-enquiry',
+    title: 'Commercial Enquiry — SMD Detailing, Ballybofey',
+    desc: 'Enquire about regular or volume detailing for your dealership, garage, fleet or business. Based in Ballybofey, Co. Donegal.',
+  },
   cms: {
     path: '/cms',
     title: 'SMD Detailing — Area Page Template',
@@ -104,6 +109,7 @@ function App() {
       case 'gallery': return <GalleryPage {...props} />;
       case 'book': return <BookPage {...props} />;
       case 'commercial': return <CommercialPage {...props} />;
+      case 'commercial-enquiry': return <CommercialEnquiryPage {...props} />;
       case 'cms': return <CMSPage {...props} />;
       default: return <HomePage {...props} />;
     }
