@@ -306,8 +306,8 @@ function BookPage({ cardStyle = 'bordered' }) {
                 </FormField>
 
 
-                <FormField label="Preferred Date (optional)">
-                  <FormInput value={form.preferred_date} onChange={v => update('preferred_date', v)} type="date" />
+                <FormField label="When are you hoping for? (optional)">
+                  <FormInput value={form.preferred_date} onChange={v => update('preferred_date', v)} placeholder="e.g. any weekday in late November, or whenever you've a slot" />
                 </FormField>
 
                 <FormField label="Notes (optional)">
