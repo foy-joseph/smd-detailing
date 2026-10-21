@@ -16,6 +16,13 @@ function GalleryPage({ navigate }) {
     { src: IMAGES.wedding, alt: 'Classic Mini with show finish', cat: 'wedding', title: 'Classic Mini — Show Finish', desc: 'The finish your wedding car gets' },
     { src: IMAGES.detail1, alt: 'VW Golf interior after deep clean', cat: 'full valet', title: 'VW Golf — Interior', desc: 'Interior extraction + deep clean' },
     { src: IMAGES.workshop, alt: 'Range Rover covered in snow foam', cat: 'mini valet', title: 'Range Rover — In Progress', desc: 'Snow foam decontamination stage' },
+    { src: '/images/gallery/tiguan-rline-interior.jpg', alt: 'VW Tiguan R-Line interior after deep clean', cat: 'full valet', title: 'VW Tiguan R-Line — Interior', desc: 'Seats, carpets and trim deep cleaned' },
+    { src: '/images/gallery/kia-ev6-interior.jpg', alt: 'Kia EV6 GT-Line interior after deep clean', cat: 'full valet', title: 'Kia EV6 GT-Line — Interior', desc: 'Interior deep clean, mats extracted' },
+    { src: '/images/gallery/bmw-x5-boot.jpg', alt: 'BMW X5 boot after extraction clean', cat: 'full valet', title: 'BMW X5 — Boot', desc: 'Boot carpet extracted and dressed' },
+    { src: '/images/gallery/audi-a1-side.jpg', alt: 'Audi A1 side profile after full valet', cat: 'full valet', title: 'Audi A1 — Exterior', desc: 'Hand wash, tar removal, sealant' },
+    { src: '/images/gallery/range-rover-sport-boot.jpg', alt: 'Range Rover Sport boot after deep clean', cat: 'full valet', title: 'Range Rover Sport — Boot', desc: 'Boot and seatbacks deep cleaned' },
+    { src: '/images/gallery/tiguan-blue-wheel.jpg', alt: 'VW Tiguan rear quarter with cleaned wheel and dressed tyre', cat: 'mini valet', title: 'VW Tiguan — Wheels & Arches', desc: 'Wheel faces cleaned, tyres dressed' },
+    { src: '/images/gallery/mercedes-c-class-interior.jpg', alt: 'Mercedes C-Class AMG Line interior after deep clean', cat: 'full valet', title: 'Mercedes C-Class AMG Line — Interior', desc: 'Leather conditioned, carpets extracted' },
   ];
 
   const filtered = filter === 'all' ? items : items.filter(i => i.cat === filter);

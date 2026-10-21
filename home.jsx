@@ -869,8 +869,8 @@ function FinalCTA({ navigate }) {
 function Stats() {
   const ref = React.useRef();
   const inView = useInView(ref);
-  const carsDetailed = useCountUp(85, 1500, inView);
-  const repeatRate = useCountUp(94, 1500, inView);
+  const carsDetailed = useCountUp(200, 1500, inView);
+  const repeatRate = useCountUp(85, 1500, inView);
 
   return (
     <div ref={ref} style={{
