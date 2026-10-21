@@ -322,7 +322,7 @@ function AboutPage({ navigate }) {
       <Section>
         <Reveal>
           <SectionLabel>Products</SectionLabel>
-          <SectionTitle>What I Use — And Why</SectionTitle>
+          <SectionTitle>What I Use and Why</SectionTitle>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.7, maxWidth: '580px', marginBottom: '36px' }}>
             I don't use supermarket products. Every product in my kit is professional-grade, chosen because it performs — not because it's cheap.
           </p>
