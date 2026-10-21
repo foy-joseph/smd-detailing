@@ -174,9 +174,9 @@ function PricingCard({ pkg, navigate, cardStyle }) {
       <div style={{ marginBottom: '4px' }}>
         <span style={{
           fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(2.2rem, 4vw, 3rem)', fontWeight: 700,
+          fontSize: 'clamp(1.9rem, 2.4vw, 2.5rem)', fontWeight: 700,
           color: 'var(--text-primary)',
-          lineHeight: 1,
+          lineHeight: 1, letterSpacing: '-0.02em', whiteSpace: 'nowrap',
         }}>€{priceFrom}–{pkg.priceTo}</span>
       </div>
 
