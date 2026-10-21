@@ -339,7 +339,7 @@ function Hero({ navigate }) {
             transform: loaded ? 'translateY(0)' : 'translateY(16px)',
             transition: 'all 0.8s cubic-bezier(.22,1,.36,1) 0.65s',
           }}>
-            <Btn size="lg" onClick={() => navigate('book')}>Get on the List</Btn>
+            <Btn size="lg" onClick={() => navigate('book')}>Book a Detail</Btn>
             <Btn size="lg" variant="outline" onClick={() => navigate('services')}>View Packages</Btn>
           </div>
 

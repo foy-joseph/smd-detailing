@@ -81,22 +81,19 @@ function PricingCards({ navigate, cardStyle = 'bordered' }) {
   return (
     <FullSection id="pricing" style={{ background: 'var(--bg-elevated)' }}>
       <Reveal>
-        <SectionLabel>Published Prices — Always</SectionLabel>
-        <SectionTitle>Four Levels of Care</SectionTitle>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', maxWidth: '560px', marginBottom: '48px' }}>
-          No DMs for a quote. No hidden extras. Pick the level of care your car deserves.
-        </p>
+        <SectionTitle style={{ marginBottom: '40px' }}>Four Levels of Care</SectionTitle>
       </Reveal>
 
       <div id="pricing-grid" style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(4, 1fr)',
+        gridAutoRows: 'auto',
         gap: '1px',
         background: 'var(--border)',
         alignItems: 'stretch',
       }}>
         {PACKAGES.map((pkg, i) => (
-          <Reveal key={pkg.tier} delay={i * 0.12} style={{ height: '100%' }}>
+          <Reveal key={pkg.tier} delay={i * 0.12} className="pricing-cell" style={{ display: 'grid', gridRow: 'span 10', gridTemplateRows: 'subgrid' }}>
             <PricingCard pkg={pkg} navigate={navigate} cardStyle={cardStyle} />
           </Reveal>
         ))}
@@ -127,9 +124,10 @@ function PricingCard({ pkg, navigate, cardStyle }) {
       style={{
         padding: 'clamp(28px, 3vw, 40px)',
         position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%',
+        display: 'grid',
+        gridRow: 'span 10',
+        gridTemplateRows: 'subgrid',
+        alignContent: 'start',
         background: 'var(--bg-elevated)',
       }}
     >
@@ -252,8 +250,7 @@ function Comparison({ cardStyle = 'bordered' }) {
   return (
     <Section id="comparison">
       <Reveal>
-        <SectionLabel>Why SMD</SectionLabel>
-        <SectionTitle>How I Compare</SectionTitle>
+        <SectionTitle>Comparing the Market</SectionTitle>
       </Reveal>
 
       <Reveal delay={0.15}>
@@ -441,6 +438,79 @@ function WinterShield({ navigate, cardStyle = 'bordered', elevated = true }) {
 }
 
 Object.assign(window, { WINTER_PACKAGES, WinterShield });
+
+/* ── Google Reviews ── */
+const GOOGLE_PLACE_URL = 'https://maps.google.com/?cid=9371905911343218472';
+const GOOGLE_REVIEWS = [
+  { name: 'Chloe C', when: 'September 2026', text: "Absolutely delighted with my car! It looks and feels brand new again, inside and out. The attention to detail is incredible. I opted for the ceramic coating due to doing a lot of driving for work to protect the exterior from wear and tear and the price was fantastic, highly recommend." },
+  { name: 'Ben Murray', when: 'June 2026', text: "Couldn't be happier with the valet. The car came up like new and the attention to detail was spot on. For the price, the quality was unreal and definitely exceeded my expectations. Highly recommend to anyone looking to get their car looking its best." },
+  { name: 'Daniel Lynch', when: 'August 2026', text: "Couldn't be happier. Had a great time, clean the car, everyone was up to perfection. Quality was amazing. Communication was also amazing — everything to do with this man on this company was just top." },
+];
+
+function Stars({ size = 14 }) {
+  return (
+    <span style={{ display: 'inline-flex', gap: '2px' }} aria-label="5 out of 5 stars">
+      {[0,1,2,3,4].map(i => (
+        <svg key={i} width={size} height={size} viewBox="0 0 24 24" fill="var(--accent)" aria-hidden="true">
+          <path d="M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7L12 17.5 5.8 21.1l1.6-7L2 9.3l7.1-.7z"/>
+        </svg>
+      ))}
+    </span>
+  );
+}
+
+function GoogleReviews({ cardStyle = 'bordered' }) {
+  return (
+    <Section id="reviews">
+      <Reveal>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: '20px', marginBottom: '36px' }}>
+          <div>
+            <SectionLabel>Reviews</SectionLabel>
+            <SectionTitle style={{ marginBottom: '12px' }}>What Customers Say</SectionTitle>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+              <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 700, lineHeight: 1 }}>5.0</span>
+              <Stars size={16} />
+              <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>on Google</span>
+            </div>
+          </div>
+          <Btn variant="outline" size="sm" href={GOOGLE_PLACE_URL}>Read all reviews on Google</Btn>
+        </div>
+      </Reveal>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gap: '20px',
+      }}>
+        {GOOGLE_REVIEWS.map((r, i) => (
+          <Reveal key={r.name} delay={i * 0.1} style={{ height: '100%' }}>
+            <figure style={{
+              ...getCardStyle(cardStyle),
+              padding: '28px 26px',
+              margin: 0,
+              height: '100%',
+              display: 'flex', flexDirection: 'column', gap: '16px',
+            }}>
+              <Stars />
+              <blockquote style={{
+                margin: 0,
+                fontSize: '0.95rem', lineHeight: 1.7,
+                color: 'var(--text-secondary)',
+                flex: 1,
+              }}>“{r.text}”</blockquote>
+              <figcaption style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '12px', flexWrap: 'wrap' }}>
+                <span style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '0.95rem' }}>{r.name}</span>
+                <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Google review · {r.when}</span>
+              </figcaption>
+            </figure>
+          </Reveal>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+Object.assign(window, { GoogleReviews });
 
 
 /* ── SMD Detailing · Homepage Sections ── */

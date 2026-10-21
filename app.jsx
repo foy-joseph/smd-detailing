@@ -153,9 +153,9 @@ function HomePage({ navigate, cardStyle }) {
   return (
     <>
       <Hero navigate={navigate} />
-      <BookingStrip />
       <Stats />
       <PricingCards navigate={navigate} cardStyle={cardStyle} />
+      <GoogleReviews cardStyle={cardStyle} />
       <Comparison cardStyle={cardStyle} />
       <WinterShield navigate={navigate} cardStyle={cardStyle} />
       <WhatIDontDo cardStyle={cardStyle} />
