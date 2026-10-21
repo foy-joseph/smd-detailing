@@ -146,8 +146,8 @@ function ServiceDetailCard({ pkg, navigate, cardStyle }) {
               display: 'flex', gap: '10px', alignItems: 'flex-start',
               fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.5,
             }}>
-              <span style={{ color: 'var(--accent)', fontSize: '0.7rem', marginTop: '5px', flexShrink: 0 }}>◆</span>
-              {item}
+              <span style={{ color: 'var(--accent)', fontSize: '0.6rem', lineHeight: '1.35rem', flexShrink: 0 }}>◆</span>
+              <span>{item}</span>
             </li>
           ))}
         </ul>

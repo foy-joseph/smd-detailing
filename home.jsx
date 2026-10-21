@@ -141,6 +141,11 @@ function PricingCard({ pkg, navigate, cardStyle }) {
         }}></div>
       )}
 
+      {/* Badge slot (keeps titles aligned across cards) */}
+      <div style={{ height: '26px', marginBottom: '14px', display: 'flex', alignItems: 'center' }}>
+        {pkg.popular && <Badge>Most Popular</Badge>}
+      </div>
+
       {/* Tier name */}
       <h3 style={{
         fontFamily: 'var(--font-display)',
@@ -180,11 +185,6 @@ function PricingCard({ pkg, navigate, cardStyle }) {
         fontSize: '0.85rem', color: 'var(--text-muted)',
         marginBottom: '28px', display: 'block',
       }}>{pkg.duration}</span>
-
-      {/* Popular badge */}
-      {pkg.popular && (
-        <Badge style={{ marginBottom: '24px', alignSelf: 'flex-start' }}>Most Popular</Badge>
-      )}
 
       {/* CTA */}
       <Btn

@@ -4,15 +4,15 @@ function GalleryPage({ navigate }) {
   const [filter, setFilter] = React.useState('all');
   const [lightbox, setLightbox] = React.useState(null);
 
-  const categories = ['all', 'full valet', 'mini valet', 'concours', 'wedding'];
+  const categories = ['all', 'full valet', 'mini valet', 'deluxe detail', 'wedding'];
 
   const items = [
     { src: IMAGES.car1, alt: 'VW Tiguan R-Line after full valet', cat: 'full valet', title: 'VW Tiguan R-Line — Full Valet', desc: 'Full exterior and interior detail' },
-    { src: IMAGES.car2, alt: 'Classic Mini and Morris Minor Traveller detailed together', cat: 'concours', title: 'Classic Mini & Morris Minor — Concours', desc: 'Two classics, show-ready' },
+    { src: IMAGES.car2, alt: 'Classic Mini and Morris Minor Traveller detailed together', cat: 'deluxe detail', title: 'Classic Mini & Morris Minor — Deluxe Detail', desc: 'Two classics, show-ready' },
     { src: IMAGES.car3, alt: 'Audi A3 saloon after full valet', cat: 'full valet', title: 'Audi A3 — Full Valet', desc: 'Clay bar + full interior deep clean' },
     { src: IMAGES.car4, alt: 'Kia Sorento after full valet', cat: 'full valet', title: 'Kia Sorento — Full Valet', desc: 'Deep clean, trim dressed, glass crystal-clear' },
     { src: IMAGES.car5, alt: 'Kia Sportage after mini valet', cat: 'mini valet', title: 'Kia Sportage — Mini Valet', desc: 'Exterior wash + interior refresh' },
-    { src: IMAGES.car6, alt: 'Classic Mini in snow foam', cat: 'concours', title: 'Classic Mini — Decontamination', desc: 'Snow foam pre-wash before hand work' },
+    { src: IMAGES.car6, alt: 'Classic Mini in snow foam', cat: 'deluxe detail', title: 'Classic Mini — Decontamination', desc: 'Snow foam pre-wash before hand work' },
     { src: IMAGES.wedding, alt: 'Classic Mini with show finish', cat: 'wedding', title: 'Classic Mini — Show Finish', desc: 'The finish your wedding car gets' },
     { src: IMAGES.detail1, alt: 'VW Golf interior after deep clean', cat: 'full valet', title: 'VW Golf — Interior', desc: 'Interior extraction + deep clean' },
     { src: IMAGES.workshop, alt: 'Range Rover covered in snow foam', cat: 'mini valet', title: 'Range Rover — In Progress', desc: 'Snow foam decontamination stage' },
