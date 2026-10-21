@@ -273,7 +273,7 @@ function AboutPage({ navigate }) {
             {
               year: '2026',
               title: 'All-Ireland 1st Place',
-              desc: "Won 1st place at the All-Ireland Mini Company Awards. Judged on business plan, financials, branding, and the product itself.",
+              desc: "Won 1st place at the All-Ireland NFTE competition. Judged on business plan, financials, branding, and the product itself.",
             },
             {
               year: '2026',
