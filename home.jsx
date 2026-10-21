@@ -4,6 +4,7 @@ const PACKAGES = [
   {
     eyebrow: 'The Weekly',
     tier: 'Mini Valet',
+    value: 'mini-valet',
     priceFrom: 70,
     priceTo: 90,
     duration: '3–4 hours',
@@ -23,6 +24,7 @@ const PACKAGES = [
   {
     eyebrow: 'The Service',
     tier: 'Full Valet',
+    value: 'full-valet',
     priceFrom: 100,
     priceTo: 160,
     duration: '5–8 hours',
@@ -43,6 +45,7 @@ const PACKAGES = [
   {
     eyebrow: 'The Showroom',
     tier: 'Premium Valet',
+    value: 'premium-valet',
     priceFrom: 180,
     priceTo: 260,
     duration: '6–10 hours',
@@ -59,6 +62,7 @@ const PACKAGES = [
   {
     eyebrow: 'The Concours',
     tier: 'Deluxe Detail',
+    value: 'deluxe-detail',
     priceFrom: 400,
     priceTo: 600,
     duration: '10–15 hours',
@@ -188,7 +192,7 @@ function PricingCard({ pkg, navigate, cardStyle }) {
       <Btn
         variant={pkg.popular ? 'primary' : 'outline'}
         style={{ width: '100%' }}
-        onClick={() => navigate('book')}
+        onClick={() => navigate('book', { package: pkg.value })}
       >
         Book {pkg.tier}
       </Btn>
@@ -323,6 +327,7 @@ Object.assign(window, { PACKAGES, PricingCards, Comparison });
 const WINTER_PACKAGES = [
   {
     tier: 'Winter Shield',
+    value: 'winter-shield',
     eyebrow: 'Seasonal',
     priceFrom: 120,
     priceTo: 160,
@@ -338,6 +343,7 @@ const WINTER_PACKAGES = [
   },
   {
     tier: 'Winter Shield+',
+    value: 'winter-shield-plus',
     eyebrow: 'Seasonal · Full Season',
     priceFrom: 200,
     priceTo: 300,
@@ -398,7 +404,7 @@ function WinterShield({ navigate, cardStyle = 'bordered', elevated = true }) {
                 lineHeight: 1, letterSpacing: '-0.02em', whiteSpace: 'nowrap',
                 marginBottom: '24px',
               }}>€{pkg.priceFrom}–{pkg.priceTo}</div>
-              <Btn variant={i === 1 ? 'primary' : 'outline'} style={{ width: '100%' }} onClick={() => navigate('book')}>
+              <Btn variant={i === 1 ? 'primary' : 'outline'} style={{ width: '100%' }} onClick={() => navigate('book', { package: pkg.value })}>
                 Book {pkg.tier}
               </Btn>
               <div style={{ height: '1px', background: 'var(--border)', margin: '28px 0' }}></div>
@@ -652,7 +658,7 @@ function WeddingPack({ navigate, cardStyle = 'bordered' }) {
                 <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 700 }}>+€60</div>
               </div>
             </div>
-            <Btn onClick={() => navigate('book')}>Enquire About Wedding Pack</Btn>
+            <Btn onClick={() => navigate('book', { package: 'wedding' })}>Enquire About Wedding Pack</Btn>
           </div>
         </div>
       </Reveal>

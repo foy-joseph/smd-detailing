@@ -86,10 +86,12 @@ function App() {
     }, 250);
   }, []);
 
-  const navigate = React.useCallback((p) => {
-    if (p === page) return;
+  const navigate = React.useCallback((p, params) => {
     const meta = PAGE_META[p] || PAGE_META.home;
-    window.history.pushState({ page: p }, '', meta.path);
+    const query = params ? '?' + new URLSearchParams(params).toString() : '';
+    if (p === page && !params) return;
+    window.history.pushState({ page: p }, '', meta.path + query);
+    if (p === page) { window.dispatchEvent(new Event('popstate')); return; }
     showPage(p);
   }, [page, showPage]);
 

@@ -457,7 +457,7 @@ function CMSPage({ navigate, cardStyle = 'bordered', slug = 'default' }) {
                   <span style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 700, color: 'var(--accent)' }}>€{pkg.priceFrom}–{pkg.priceTo}</span>
                   <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>{pkg.duration}</span>
                 </div>
-                <Btn size="sm" variant={pkg.popular ? 'primary' : 'outline'} onClick={() => navigate('book')} style={{ width: '100%' }}>
+                <Btn size="sm" variant={pkg.popular ? 'primary' : 'outline'} onClick={() => navigate('book', { package: pkg.value })} style={{ width: '100%' }}>
                   Book Now
                 </Btn>
               </div>

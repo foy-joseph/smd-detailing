@@ -184,10 +184,26 @@ Object.assign(window, { GalleryPage });
 
 /* ── SMD Detailing · Booking Page ── */
 
+const BOOK_PACKAGE_OPTIONS = [
+  { value: 'mini-valet', label: 'Mini Valet — €70–90' },
+  { value: 'full-valet', label: 'Full Valet — €100–160' },
+  { value: 'premium-valet', label: 'Premium Valet — €180–260' },
+  { value: 'deluxe-detail', label: 'Deluxe Detail — €400–600' },
+  { value: 'winter-shield', label: 'Winter Shield — €120–160' },
+  { value: 'winter-shield-plus', label: 'Winter Shield+ — €200–300' },
+  { value: 'wedding', label: 'Wedding Pack — €450–650' },
+  { value: 'wedding-addon', label: 'Wedding Pack Add-on — +€60' },
+];
+
+function packageFromUrl() {
+  const v = new URLSearchParams(window.location.search).get('package');
+  return BOOK_PACKAGE_OPTIONS.some(o => o.value === v) ? v : 'full-valet';
+}
+
 function BookPage({ cardStyle = 'bordered' }) {
   const [form, setForm] = React.useState({
     name: '', phone: '', email: '',
-    vehicle: '', package: 'full-valet',
+    vehicle: '', package: packageFromUrl(),
     service_type: 'drop-off',
     preferred_date: '', notes: '',
     is_dealer: false, dealer_name: '', volume: '',
@@ -195,6 +211,12 @@ function BookPage({ cardStyle = 'bordered' }) {
   const [errors, setErrors] = React.useState({});
   const [submitted, setSubmitted] = React.useState(false);
   const [sending, setSending] = React.useState(false);
+
+  React.useEffect(() => {
+    const sync = () => setForm(f => ({ ...f, package: packageFromUrl() }));
+    window.addEventListener('popstate', sync);
+    return () => window.removeEventListener('popstate', sync);
+  }, []);
 
   const update = (k, v) => {
     setForm(f => ({ ...f, [k]: v }));
@@ -253,17 +275,6 @@ function BookPage({ cardStyle = 'bordered' }) {
     );
   }
 
-  const packages = [
-    { value: 'mini-valet', label: 'Mini Valet — €70–90' },
-    { value: 'full-valet', label: 'Full Valet — €100–160' },
-    { value: 'premium-valet', label: 'Premium Valet — €180–260' },
-    { value: 'deluxe-detail', label: 'Deluxe Detail — €400–600' },
-    { value: 'winter-shield', label: 'Winter Shield — €120–160' },
-    { value: 'winter-shield-plus', label: 'Winter Shield+ — €200–300' },
-    { value: 'wedding', label: 'Wedding Pack — €450–650' },
-    { value: 'wedding-addon', label: 'Wedding Pack Add-on — +€60' },
-  ];
-
   return (
     <div style={{ paddingTop: '100px' }}>
       <Section>
@@ -302,7 +313,7 @@ function BookPage({ cardStyle = 'bordered' }) {
                 </FormField>
 
                 <FormField label="Package">
-                  <FormSelect value={form.package} onChange={v => update('package', v)} options={packages} />
+                  <FormSelect value={form.package} onChange={v => update('package', v)} options={BOOK_PACKAGE_OPTIONS} />
                 </FormField>
 
 

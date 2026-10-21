@@ -127,7 +127,7 @@ function ServiceDetailCard({ pkg, navigate, cardStyle }) {
           {extra.desc}
         </p>
 
-        <Btn onClick={() => navigate('book')}>Book {pkg.tier}</Btn>
+        <Btn onClick={() => navigate('book', { package: pkg.value })}>Book {pkg.tier}</Btn>
       </div>
 
       {/* Right: inclusions */}
