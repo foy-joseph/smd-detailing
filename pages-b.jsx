@@ -208,7 +208,7 @@ function BookPage({ cardStyle = 'bordered' }) {
     if (!form.email.trim()) errs.email = 'Email is required';
     else if (!/\S+@\S+\.\S+/.test(form.email)) errs.email = 'Please enter a valid email';
     if (!form.vehicle.trim()) errs.vehicle = 'Vehicle make and model is required';
-    if (form.is_dealer && !form.dealer_name.trim()) errs.dealer_name = 'Dealership name is required';
+    if (form.is_dealer && !form.dealer_name.trim()) errs.dealer_name = 'Business name is required';
     return errs;
   };
 
@@ -334,7 +334,7 @@ function BookPage({ cardStyle = 'bordered' }) {
                   ></textarea>
                 </FormField>
 
-                {/* Dealer toggle */}
+                {/* Commercial toggle */}
                 <div style={{
                   padding: '16px 20px',
                   background: 'var(--bg-card)',
@@ -364,13 +364,13 @@ function BookPage({ cardStyle = 'bordered' }) {
                       }}></div>
                     </div>
                     <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                      I'm a dealer or garage enquiring about volume work
+                      I'm a business enquiring about regular or volume work
                     </span>
                   </label>
 
                   {form.is_dealer && (
                     <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                      <FormField label="Dealership / Garage Name" error={errors.dealer_name}>
+                      <FormField label="Business Name" error={errors.dealer_name}>
                         <FormInput value={form.dealer_name} onChange={v => update('dealer_name', v)} placeholder="Business name" />
                       </FormField>
                       <FormField label="Approx. Volume per Week">

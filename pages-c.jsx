@@ -1,6 +1,6 @@
-/* ── SMD Detailing · Dealers Page ── */
+/* ── SMD Detailing · Commercial Page ── */
 
-function DealersPage({ navigate, cardStyle = 'bordered' }) {
+function CommercialPage({ navigate, cardStyle = 'bordered' }) {
   return (
     <div style={{ paddingTop: '100px' }}>
       {/* Hero */}
@@ -12,7 +12,7 @@ function DealersPage({ navigate, cardStyle = 'bordered' }) {
           alignItems: 'center',
         }}>
           <Reveal>
-            <SectionLabel>Dealer Programme</SectionLabel>
+            <SectionLabel>Commercial Programme</SectionLabel>
             <h1 style={{
               fontFamily: 'var(--font-display)',
               fontSize: 'clamp(2rem, 5vw, 3rem)',
@@ -22,8 +22,8 @@ function DealersPage({ navigate, cardStyle = 'bordered' }) {
               <span style={{ color: 'var(--accent)' }}>Every Week.</span>
             </h1>
             <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '24px' }}>
-              I work with dealers and garages across Donegal. Weekly slots, consistent quality,
-              fast turnaround. Your stock always looks its best.
+              I work with dealers, garages, fleets and businesses across Donegal. Weekly slots, consistent quality,
+              fast turnaround. Your vehicles always look their best.
             </p>
             <Btn size="lg" onClick={() => navigate('book')}>Enquire About Volume Work</Btn>
           </Reveal>
@@ -40,10 +40,10 @@ function DealersPage({ navigate, cardStyle = 'bordered' }) {
         </div>
       </Section>
 
-      {/* Why dealers choose SMD */}
+      {/* Why businesses choose SMD */}
       <FullSection style={{ background: 'var(--bg-elevated)' }}>
         <Reveal>
-          <SectionLabel>Why Dealers Choose SMD</SectionLabel>
+          <SectionLabel>Why Businesses Choose SMD</SectionLabel>
           <SectionTitle>Built for Volume</SectionTitle>
         </Reveal>
 
@@ -55,9 +55,9 @@ function DealersPage({ navigate, cardStyle = 'bordered' }) {
         }}>
           {[
             { title: 'Dedicated Weekly Slots', desc: "Your cars get a fixed slot every week. No chasing, no waiting. I show up, I deliver, it's done." },
-            { title: 'Consistent Quality', desc: "Same person, same standards, every time. You never wonder who's touching your stock." },
-            { title: 'Fast Turnaround', desc: "Pre-sale prep done efficiently. Cars ready for the forecourt when you need them." },
-            { title: 'Professional Care', desc: "I treat every car as if it were my own. You never wonder who's touching your stock or what products they're using." },
+            { title: 'Consistent Quality', desc: "Same person, same standards, every time. You never wonder who's touching your vehicles." },
+            { title: 'Fast Turnaround', desc: "Pre-sale prep, fleet turnarounds or regular upkeep — done efficiently and ready when you need them." },
+            { title: 'Professional Care', desc: "I treat every vehicle as if it were my own. You always know who's doing the work and what products they're using." },
             { title: 'Published Pricing', desc: "Transparent rates. No surprises, no invoice shocks. We agree the scope and that's what you pay." },
             { title: 'One Point of Contact', desc: "You deal with me directly. No call centres, no account managers. Text me, I reply." },
           ].map((item, i) => (
@@ -97,7 +97,7 @@ function DealersPage({ navigate, cardStyle = 'bordered' }) {
           {[
             { step: '01', title: 'Get in touch', desc: "Fill out the enquiry form or text me directly. Tell me your typical volume and what you need." },
             { step: '02', title: "We agree terms", desc: "I'll come see your operation, understand the workflow, and we'll agree pricing and a weekly schedule." },
-            { step: '03', title: 'Weekly delivery', desc: "I show up on your day, prep your stock, and deliver consistent quality every single week." },
+            { step: '03', title: 'Weekly delivery', desc: "I show up on your day, work through your vehicles, and deliver consistent quality every single week." },
           ].map((item, i) => (
             <Reveal key={i} delay={i * 0.1}>
               <div style={{
@@ -135,14 +135,14 @@ function DealersPage({ navigate, cardStyle = 'bordered' }) {
           }}>
             Whether it's three cars a week or fifteen, I'll build a programme that fits your operation.
           </p>
-          <Btn size="lg" onClick={() => navigate('book')}>Dealer Enquiry</Btn>
+          <Btn size="lg" onClick={() => navigate('book')}>Commercial Enquiry</Btn>
         </Reveal>
       </FullSection>
     </div>
   );
 }
 
-Object.assign(window, { DealersPage });
+Object.assign(window, { CommercialPage });
 
 
 /* ── SMD Detailing · CMS / SEO Template Page ── */

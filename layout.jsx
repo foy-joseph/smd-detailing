@@ -22,7 +22,7 @@ function Nav({ currentPage, navigate }) {
     { id: 'services', label: 'Services' },
     { id: 'about', label: 'About' },
     { id: 'gallery', label: 'Gallery' },
-    { id: 'dealers', label: 'Dealers' },
+    { id: 'commercial', label: 'Commercial' },
   ];
 
   const navStyle = {
@@ -173,7 +173,7 @@ function Footer({ navigate }) {
         <div>
           <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '16px' }}>Quick Links</h4>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            {[{id:'services',l:'Services'},{id:'about',l:'About Shay'},{id:'gallery',l:'Gallery'},{id:'book',l:'Book Now'},{id:'dealers',l:'Dealer Programme'}].map(lnk => (
+            {[{id:'services',l:'Services'},{id:'about',l:'About Shay'},{id:'gallery',l:'Gallery'},{id:'book',l:'Book Now'},{id:'commercial',l:'Commercial Programme'}].map(lnk => (
               <a key={lnk.id} href={pathFor(lnk.id)} onClick={e => { e.preventDefault(); navigate(lnk.id); }} style={{
                 background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', textDecoration: 'none',
                 fontFamily: 'var(--font-body)', fontSize: '0.9rem',

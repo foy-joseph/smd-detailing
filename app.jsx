@@ -29,10 +29,10 @@ const PAGE_META = {
     title: 'Book a Detail — SMD Detailing, Ballybofey',
     desc: 'Book a Mini, Full, Premium or Deluxe detail with Shay. Confirmed within 24 hours. Drop-off to Ballybofey, Co. Donegal.',
   },
-  dealers: {
-    path: '/dealers',
-    title: 'Dealer Programme — SMD Detailing, Ballybofey',
-    desc: 'Volume detailing for dealers and garages across Donegal. Weekly slots, consistent quality, fast turnaround.',
+  commercial: {
+    path: '/commercial',
+    title: 'Commercial Programme — SMD Detailing, Ballybofey',
+    desc: 'Regular and volume detailing for dealers, garages, fleets and businesses across Donegal. Weekly slots, consistent quality, fast turnaround.',
   },
   cms: {
     path: '/cms',
@@ -44,6 +44,7 @@ const PAGE_META = {
 function pageFromPath(pathname) {
   const slug = String(pathname || '/').replace(/^\/+|\/+$/g, '');
   if (!slug) return 'home';
+  if (slug === 'dealers') return 'commercial'; // legacy URL
   return PAGE_META[slug] ? slug : 'home';
 }
 
@@ -102,7 +103,7 @@ function App() {
       case 'about': return <AboutPage {...props} />;
       case 'gallery': return <GalleryPage {...props} />;
       case 'book': return <BookPage {...props} />;
-      case 'dealers': return <DealersPage {...props} />;
+      case 'commercial': return <CommercialPage {...props} />;
       case 'cms': return <CMSPage {...props} />;
       default: return <HomePage {...props} />;
     }
@@ -138,7 +139,7 @@ function App() {
         </TweakSection>
         <TweakSection label="Pages">
           {[{id:'home',label:'Home'},{id:'services',label:'Services'},{id:'about',label:'About'},
-            {id:'gallery',label:'Gallery'},{id:'book',label:'Book'},{id:'dealers',label:'Dealers'},
+            {id:'gallery',label:'Gallery'},{id:'book',label:'Book'},{id:'commercial',label:'Commercial'},
             {id:'cms',label:'SEO Template'}].map(p => (
             <TweakButton key={p.id} label={p.label} onClick={() => navigate(p.id)} />
           ))}
@@ -158,7 +159,7 @@ function HomePage({ navigate, cardStyle }) {
       <Comparison cardStyle={cardStyle} />
       <WhatIDontDo cardStyle={cardStyle} />
       <WeddingPack navigate={navigate} cardStyle={cardStyle} />
-      <DealerStrip navigate={navigate} />
+      <CommercialStrip navigate={navigate} />
       <CoverageArea />
       <PressStrip />
       <SocialProof />

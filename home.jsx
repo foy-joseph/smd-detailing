@@ -448,7 +448,7 @@ function WeddingPack({ navigate, cardStyle = 'bordered' }) {
   );
 }
 
-function DealerStrip({ navigate }) {
+function CommercialStrip({ navigate }) {
   return (
     <Section>
       <Reveal>
@@ -467,12 +467,12 @@ function DealerStrip({ navigate }) {
               fontFamily: 'var(--font-display)',
               fontSize: 'clamp(1.2rem, 2.5vw, 1.5rem)',
               fontWeight: 700,
-            }}>Dealer Programme</h3>
+            }}>Commercial Programme</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '8px', maxWidth: '440px' }}>
-              Weekly slots, reliable turnaround, volume-ready. I work with dealers and garages across Donegal.
+              Weekly slots, reliable turnaround, volume-ready. I work with dealers, garages, fleets and businesses across Donegal.
             </p>
           </div>
-          <Btn variant="outline" onClick={() => navigate('dealers')}>Learn More</Btn>
+          <Btn variant="outline" onClick={() => navigate('commercial')}>Learn More</Btn>
         </div>
       </Reveal>
     </Section>
@@ -691,6 +691,6 @@ function Stats() {
 }
 
 Object.assign(window, {
-  BookingStrip, WhatIDontDo, WeddingPack, DealerStrip,
+  BookingStrip, WhatIDontDo, WeddingPack, CommercialStrip,
   CoverageArea, PressStrip, SocialProof, FinalCTA, Stats,
 });
