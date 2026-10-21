@@ -446,11 +446,24 @@ const GOOGLE_REVIEWS = [
   { name: 'Daniel Lynch', when: 'August 2026', text: "Couldn't be happier. Had a great time, clean the car, everyone was up to perfection. Quality was amazing. Communication was also amazing — everything to do with this man on this company was just top." },
 ];
 
-function Stars({ size = 14 }) {
+const GOOGLE_REVIEW_COUNT = 6;
+
+function GoogleG({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 48 48" aria-hidden="true">
+      <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+      <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+      <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+      <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+    </svg>
+  );
+}
+
+function Stars({ size = 16, color = '#FBBC04' }) {
   return (
     <span style={{ display: 'inline-flex', gap: '2px' }} aria-label="5 out of 5 stars">
       {[0,1,2,3,4].map(i => (
-        <svg key={i} width={size} height={size} viewBox="0 0 24 24" fill="var(--accent)" aria-hidden="true">
+        <svg key={i} width={size} height={size} viewBox="0 0 24 24" fill={color} aria-hidden="true">
           <path d="M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7L12 17.5 5.8 21.1l1.6-7L2 9.3l7.1-.7z"/>
         </svg>
       ))}
@@ -458,50 +471,60 @@ function Stars({ size = 14 }) {
   );
 }
 
+const AVATAR_COLOURS = ['#7B1FA2', '#00796B', '#C62828', '#1565C0', '#EF6C00'];
+
 function GoogleReviews({ cardStyle = 'bordered' }) {
   return (
     <Section id="reviews">
       <Reveal>
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: '20px', marginBottom: '36px' }}>
-          <div>
-            <SectionLabel>Reviews</SectionLabel>
-            <SectionTitle style={{ marginBottom: '12px' }}>What Customers Say</SectionTitle>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-              <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 700, lineHeight: 1 }}>5.0</span>
-              <Stars size={16} />
-              <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>on Google</span>
+        <div style={{
+          display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center',
+          gap: '20px', marginBottom: '28px',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <GoogleG size={44} />
+            <div>
+              <div style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', marginBottom: '2px' }}>Google Rating</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.9rem', fontWeight: 700, lineHeight: 1 }}>5.0</span>
+                <Stars size={22} />
+              </div>
+              <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: '4px' }}>Based on {GOOGLE_REVIEW_COUNT} reviews</div>
             </div>
           </div>
-          <Btn variant="outline" size="sm" href={GOOGLE_PLACE_URL}>Read all reviews on Google</Btn>
+          <Btn variant="outline" size="sm" href={GOOGLE_PLACE_URL} target="_blank">Read all reviews on Google</Btn>
         </div>
       </Reveal>
 
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-        gap: '20px',
+        gap: '16px',
       }}>
         {GOOGLE_REVIEWS.map((r, i) => (
           <Reveal key={r.name} delay={i * 0.1} style={{ height: '100%' }}>
-            <figure style={{
+            <article style={{
               ...getCardStyle(cardStyle),
-              padding: '28px 26px',
-              margin: 0,
+              padding: '22px 22px 20px',
               height: '100%',
-              display: 'flex', flexDirection: 'column', gap: '16px',
+              display: 'flex', flexDirection: 'column', gap: '12px',
             }}>
-              <Stars />
-              <blockquote style={{
-                margin: 0,
-                fontSize: '0.95rem', lineHeight: 1.7,
-                color: 'var(--text-secondary)',
-                flex: 1,
-              }}>“{r.text}”</blockquote>
-              <figcaption style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '12px', flexWrap: 'wrap' }}>
-                <span style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '0.95rem' }}>{r.name}</span>
-                <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Google review · {r.when}</span>
-              </figcaption>
-            </figure>
+              <header style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <span aria-hidden="true" style={{
+                  width: '40px', height: '40px', borderRadius: '50%', flexShrink: 0,
+                  background: AVATAR_COLOURS[i % AVATAR_COLOURS.length], color: '#fff',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '1rem',
+                }}>{r.name.trim()[0]}</span>
+                <div style={{ minWidth: 0, flex: 1 }}>
+                  <div style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--text-primary)', lineHeight: 1.2 }}>{r.name}</div>
+                  <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '2px' }}>{r.when}</div>
+                </div>
+                <GoogleG size={18} />
+              </header>
+              <Stars size={15} />
+              <p style={{ margin: 0, fontSize: '0.92rem', lineHeight: 1.65, color: 'var(--text-secondary)', flex: 1 }}>{r.text}</p>
+            </article>
           </Reveal>
         ))}
       </div>

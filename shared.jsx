@@ -181,7 +181,7 @@ function SectionTitle({ children, style = {} }) {
   );
 }
 
-function Btn({ children, variant = 'primary', size = 'md', onClick, style = {}, href }) {
+function Btn({ children, variant = 'primary', size = 'md', onClick, style = {}, href, target }) {
   const base = {
     fontFamily: 'var(--font-display)',
     fontWeight: 600,
@@ -227,7 +227,7 @@ function Btn({ children, variant = 'primary', size = 'md', onClick, style = {}, 
       if (variant === 'ghost') { e.target.style.color = 'var(--text-primary)'; }
     }
   };
-  if (href) return <a href={href} style={s} {...hoverHandlers}>{children}</a>;
+  if (href) return <a href={href} target={target} rel={target === '_blank' ? 'noopener' : undefined} style={s} {...hoverHandlers}>{children}</a>;
   return <button onClick={onClick} style={s} {...hoverHandlers}>{children}</button>;
 }
 
