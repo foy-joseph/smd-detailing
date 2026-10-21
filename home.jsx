@@ -341,14 +341,13 @@ const WINTER_PACKAGES = [
     eyebrow: 'Seasonal · Full Season',
     priceFrom: 200,
     priceTo: 300,
-    desc: "Everything in Winter Shield, with longer-lasting protection and the interior looked after too — for the car that's out in it every day.",
+    desc: "Everything in Winter Shield, plus a gloss-enhancement paint correction and a one-year ceramic coating — for the car that's out in it every day.",
     includes: [
       'Everything in Winter Shield, plus:',
-      'Extended ceramic sealant to last the season',
+      'Gloss enhancement paint correction',
+      '1-year ceramic coating',
       'Ceramic wheel coating against salt & brake dust',
-      'Carpets & mats deep cleaned and protected',
       'Underbody rinse & protection check',
-      'Interior plastics & leather protected',
     ],
   },
 ];
@@ -361,8 +360,8 @@ function WinterShield({ navigate, cardStyle = 'bordered', elevated = true }) {
         <SectionTitle>Winter Shield</SectionTitle>
         <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', maxWidth: '600px', marginBottom: '40px', lineHeight: 1.7 }}>
           Donegal roads get salted for months on end. Left sitting, salt eats paint, alloys and seals.
-          Winter Shield is a protection package, not a valet — it seals the car before the worst of it
-          and makes every wash through the season easier.
+          Winter Shield is an exterior protection package, not a valet — it seals the car before the worst of it
+          and makes every wash through the season easier. Both options are exterior only.
         </p>
       </Reveal>
 
