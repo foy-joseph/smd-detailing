@@ -122,16 +122,18 @@ function GalleryPage({ navigate }) {
             padding: 'clamp(32px,5vw,48px)',
             textAlign: 'center',
           }}>
-            <SectionLabel>Before & After</SectionLabel>
+            <SectionLabel>Follow the Work</SectionLabel>
             <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 700, marginBottom: '12px' }}>
-              See the Transformation
+              Follow Me on Socials
             </h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', maxWidth: '440px', margin: '0 auto 24px' }}>
-              Follow my work on TikTok and Facebook for before/after photos, process breakdowns, and detailing tips.
+              Before and after photos, process breakdowns and detailing tips — new work posted every week.
             </p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
               {SOCIALS.map(s => (
-                <Btn key={s.name} variant="outline" size="sm" onClick={() => window.open(s.url, '_blank', 'noopener')}>{s.name}</Btn>
+                <Btn key={s.name} variant="outline" size="sm" onClick={() => window.open(s.url, '_blank', 'noopener')} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                  <SocialIcon name={s.name} size={16} /> {s.name}
+                </Btn>
               ))}
             </div>
           </div>
