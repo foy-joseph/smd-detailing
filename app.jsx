@@ -157,6 +157,7 @@ function HomePage({ navigate, cardStyle }) {
       <Stats />
       <PricingCards navigate={navigate} cardStyle={cardStyle} />
       <Comparison cardStyle={cardStyle} />
+      <WinterShield navigate={navigate} cardStyle={cardStyle} />
       <WhatIDontDo cardStyle={cardStyle} />
       <WeddingPack navigate={navigate} cardStyle={cardStyle} />
       <CommercialStrip navigate={navigate} />

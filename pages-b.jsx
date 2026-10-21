@@ -259,6 +259,8 @@ function BookPage({ cardStyle = 'bordered' }) {
     { value: 'full-valet', label: 'Full Valet — €100–160' },
     { value: 'premium-valet', label: 'Premium Valet — €180–260' },
     { value: 'deluxe-detail', label: 'Deluxe Detail — €400–600' },
+    { value: 'winter-shield', label: 'Winter Shield — €120–160' },
+    { value: 'winter-shield-plus', label: 'Winter Shield+ — €200–300' },
     { value: 'wedding', label: 'Wedding Pack — €450–650' },
     { value: 'wedding-addon', label: 'Wedding Pack Add-on — +€60' },
   ];

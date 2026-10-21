@@ -322,6 +322,126 @@ function compTd(extra = {}) {
 
 Object.assign(window, { PACKAGES, PricingCards, Comparison });
 
+/* ── Seasonal · Winter Shield ── */
+const WINTER_PACKAGES = [
+  {
+    tier: 'Winter Shield',
+    eyebrow: 'Seasonal',
+    priceFrom: 120,
+    priceTo: 160,
+    desc: "Seal the car before the salt goes down. Exterior protection that stops grit and road salt sitting on your paint, alloys and seals through the worst months.",
+    includes: [
+      'Two-bucket hand wash & full decontamination',
+      'Tar & road-salt removal',
+      'Winter-grade paint sealant',
+      'Alloys & wheel arches deep cleaned and sealed',
+      'Door & boot seals conditioned against freezing',
+      'Hydrophobic glass treatment for wet roads',
+    ],
+  },
+  {
+    tier: 'Winter Shield+',
+    eyebrow: 'Seasonal · Full Season',
+    priceFrom: 200,
+    priceTo: 300,
+    desc: "Everything in Winter Shield, with longer-lasting protection and the interior looked after too — for the car that's out in it every day.",
+    includes: [
+      'Everything in Winter Shield, plus:',
+      'Extended ceramic sealant to last the season',
+      'Ceramic wheel coating against salt & brake dust',
+      'Carpets & mats deep cleaned and protected',
+      'Underbody rinse & protection check',
+      'Interior plastics & leather protected',
+    ],
+  },
+];
+
+function WinterShield({ navigate, cardStyle = 'bordered', elevated = true }) {
+  return (
+    <FullSection id="winter" style={{ background: elevated ? 'var(--bg-elevated)' : 'var(--bg)' }}>
+      <Reveal>
+        <SectionLabel>Seasonal · November to March</SectionLabel>
+        <SectionTitle>Winter Shield</SectionTitle>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', maxWidth: '600px', marginBottom: '40px', lineHeight: 1.7 }}>
+          Donegal roads get salted for months on end. Left sitting, salt eats paint, alloys and seals.
+          Winter Shield is a protection package, not a valet — it seals the car before the worst of it
+          and makes every wash through the season easier.
+        </p>
+      </Reveal>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+        gap: '20px',
+        alignItems: 'stretch',
+      }}>
+        {WINTER_PACKAGES.map((pkg, i) => (
+          <Reveal key={pkg.tier} delay={i * 0.12} style={{ height: '100%' }}>
+            <div style={{
+              ...getCardStyle(cardStyle),
+              padding: 'clamp(28px, 3vw, 40px)',
+              height: '100%',
+              display: 'flex', flexDirection: 'column',
+            }}>
+              <span style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '0.7rem', fontWeight: 600,
+                letterSpacing: '0.12em', textTransform: 'uppercase',
+                color: 'var(--text-muted)',
+                marginBottom: '10px', display: 'block',
+              }}>{pkg.eyebrow}</span>
+              <h3 style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(1.4rem, 2.5vw, 1.8rem)', fontWeight: 700,
+                marginBottom: '12px',
+              }}>{pkg.tier}</h3>
+              <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '24px' }}>{pkg.desc}</p>
+              <div style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(1.9rem, 2.4vw, 2.5rem)', fontWeight: 700,
+                lineHeight: 1, letterSpacing: '-0.02em', whiteSpace: 'nowrap',
+                marginBottom: '24px',
+              }}>€{pkg.priceFrom}–{pkg.priceTo}</div>
+              <Btn variant={i === 1 ? 'primary' : 'outline'} style={{ width: '100%' }} onClick={() => navigate('book')}>
+                Book {pkg.tier}
+              </Btn>
+              <div style={{ height: '1px', background: 'var(--border)', margin: '28px 0' }}></div>
+              <span style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '0.78rem', fontWeight: 600,
+                letterSpacing: '0.08em', textTransform: 'uppercase',
+                marginBottom: '16px', display: 'block',
+              }}>Includes:</span>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '11px' }}>
+                {pkg.includes.map((item, j) => {
+                  const isHeader = item.endsWith(':');
+                  return (
+                    <li key={j} style={{
+                      display: 'flex', gap: '10px', alignItems: 'flex-start',
+                      fontSize: '0.88rem', lineHeight: 1.5,
+                      color: isHeader ? 'var(--text-primary)' : 'var(--text-secondary)',
+                      fontWeight: isHeader ? 600 : 400,
+                    }}>
+                      {!isHeader && (
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0, marginTop: '3px' }}>
+                          <path d="M2.5 7.5L5.5 10.5L11.5 4" stroke="var(--accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      )}
+                      <span>{item}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </FullSection>
+  );
+}
+
+Object.assign(window, { WINTER_PACKAGES, WinterShield });
+
 
 /* ── SMD Detailing · Homepage Sections ── */
 

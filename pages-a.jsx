@@ -40,6 +40,9 @@ function ServicesPage({ navigate, cardStyle = 'bordered' }) {
         </div>
       </Section>
 
+      {/* Seasonal */}
+      <WinterShield navigate={navigate} cardStyle={cardStyle} elevated={false} />
+
       {/* Wedding Pack full */}
       <WeddingPack navigate={navigate} cardStyle={cardStyle} />
 
